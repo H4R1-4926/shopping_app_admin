@@ -7,9 +7,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_app_admin/Application/Theme%20Bloc/theme_bloc_bloc.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
 import 'package:shopping_app_admin/Presentation/Screens/Home/Notification/notification_page.dart';
-import 'package:shopping_app_admin/Presentation/Screens/Home/Search/search_page.dart';
-
-import 'package:shopping_app_admin/Presentation/Screens/Home/Widgets/grid_explore_widget.dart';
 
 import 'Widgets/carousal_widget.dart';
 
@@ -68,53 +65,14 @@ class HomePage extends StatelessWidget {
                     },
                     icon: const Icon(Icons.notifications_outlined)),
               ],
-              bottom: PreferredSize(
-                  preferredSize: const Size(double.infinity, 85),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(PageRouteBuilder(
-                        pageBuilder: (context, animation, secondaryAnimation) =>
-                            const SearchPage(),
-                        transitionsBuilder:
-                            (context, animation, secondaryAnimation, child) {
-                          return FadeTransition(
-                            opacity: animation,
-                            child: child,
-                          );
-                        },
-                      ));
-                    },
-                    child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 20),
-                        child: Container(
-                          width: 350,
-                          height: 47,
-                          decoration: BoxDecoration(
-                              color: Theme.of(context).brightness ==
-                                      Brightness.dark
-                                  ? kdarkcolor1
-                                  : klightGrey,
-                              borderRadius: BorderRadius.circular(25)),
-                          child: const Row(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(left: 10),
-                                child: Icon(
-                                  Icons.search_outlined,
-                                  color: Color.fromARGB(255, 195, 195, 195),
-                                ),
-                              )
-                            ],
-                          ),
-                        )),
-                  )),
             ),
             body: ListView(
               children: const [
+                SizedBox(
+                  height: 50,
+                ),
                 TopContainerWidget(),
-                CatogorySection(),
-                GridCategaryWidget(),
+                GridPage()
               ],
             ));
       },

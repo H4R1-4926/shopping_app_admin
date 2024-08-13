@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
 import 'package:shopping_app_admin/Core/size.dart';
-import 'package:shopping_app_admin/Presentation/Home/tab_bar.dart';
+
+import 'package:shopping_app_admin/Presentation/Screens/Home/hompage.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -16,7 +17,7 @@ class LoginPage extends StatelessWidget {
         ),
         body: ListView(children: [
           Padding(
-            padding: const EdgeInsets.only(top: 50, left: 15),
+            padding: const EdgeInsets.only(top: 40, left: 15),
             child: Text(
               'Welcome Back',
               style: GoogleFonts.inter(
@@ -24,8 +25,19 @@ class LoginPage extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
           ),
-          kSizedBoxHeight40,
-          kSizedBoxHeight30,
+          kSizedBoxHeight20,
+          Center(
+            child: CircleAvatar(
+              backgroundColor: Theme.of(context).brightness == Brightness.dark
+                  ? kblack
+                  : kwhite,
+              radius: 80,
+              backgroundImage: Theme.of(context).brightness == Brightness.dark
+                  ? const AssetImage('assets/img/gym arm white.png')
+                  : const AssetImage('assets/img/gym arm black.png'),
+            ),
+          ),
+          kSizedBoxHeight20,
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: TextFormField(
@@ -92,7 +104,7 @@ class LoginPage extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const TabBarPage(),
+                      builder: (context) => const HomePage(),
                     ));
               },
               child: Container(

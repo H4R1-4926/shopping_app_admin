@@ -3,8 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
 import 'package:shopping_app_admin/Core/img.dart';
 
-import '../Search/search_page.dart';
-
 class ItemList extends StatelessWidget {
   const ItemList({super.key});
 
@@ -17,27 +15,6 @@ class ItemList extends StatelessWidget {
           style:
               GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 22),
         ),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.of(context).push(PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) =>
-                      const SearchPage(),
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) {
-                    return FadeTransition(
-                      opacity: animation,
-                      child: child,
-                    );
-                  },
-                ));
-              },
-              icon: const Icon(
-                Icons.search_outlined,
-                size: 28,
-                color: kGrey,
-              ))
-        ],
       ),
       body: GridView.builder(
         itemCount: 25,

@@ -26,7 +26,7 @@ class _TopContainerWidgetState extends State<TopContainerWidget> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'homepage.mostpopular'.tr(),
@@ -34,6 +34,17 @@ class _TopContainerWidgetState extends State<TopContainerWidget> {
                       fontWeight: FontWeight.bold,
                       fontSize: context.locale.languageCode == 'en' ? 20 : 17),
                 ),
+                TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Add',
+                      style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? kwhite
+                              : kblack),
+                    ))
               ],
             ),
           ),

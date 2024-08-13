@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
 import 'package:shopping_app_admin/Core/size.dart';
-import 'package:shopping_app_admin/Presentation/Home/tab_bar.dart';
 
 class PaymentPage extends StatelessWidget {
   const PaymentPage({super.key});
@@ -321,14 +320,7 @@ class PaymentPage extends StatelessWidget {
                 topLeft: Radius.circular(20), topRight: Radius.circular(20))),
         child: Center(
           child: ElevatedButton(
-            onPressed: () {
-              Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const TabBarPage(),
-                  ),
-                  (route) => false);
-            },
+            onPressed: () {},
             style: ButtonStyle(
                 backgroundColor: Theme.of(context).brightness == Brightness.dark
                     ? const WidgetStatePropertyAll(kdarkcolor3)

@@ -7,8 +7,6 @@ import 'package:shopping_app_admin/Core/img.dart';
 import 'package:shopping_app_admin/Core/size.dart';
 import 'package:shopping_app_admin/Presentation/Screens/Cart/Checkout/checkout_page.dart';
 
-import '../Home/Search/search_page.dart';
-
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
@@ -24,27 +22,6 @@ class CartPage extends StatelessWidget {
             style: GoogleFonts.montserrat(
                 fontWeight: FontWeight.bold, fontSize: 20),
           ),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  Navigator.of(context).push(PageRouteBuilder(
-                    pageBuilder: (context, animation, secondaryAnimation) =>
-                        const SearchPage(),
-                    transitionsBuilder:
-                        (context, animation, secondaryAnimation, child) {
-                      return FadeTransition(
-                        opacity: animation,
-                        child: child,
-                      );
-                    },
-                  ));
-                },
-                icon: const Icon(
-                  Icons.search_outlined,
-                  size: 28,
-                  color: kGrey,
-                ))
-          ],
           bottom: PreferredSize(
               preferredSize: const Size(double.infinity, 80),
               child: SizedBox(
