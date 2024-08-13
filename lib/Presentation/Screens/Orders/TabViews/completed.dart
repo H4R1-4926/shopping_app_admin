@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -96,13 +95,9 @@ class OrderCompleted extends StatelessWidget {
                                             BorderRadius.circular(20)),
                                     child: Center(
                                       child: Text(
-                                        'orderpage.completed'.tr(),
-                                        style: GoogleFonts.openSans(
-                                            fontSize:
-                                                context.locale.languageCode ==
-                                                        'en'
-                                                    ? 12
-                                                    : 6),
+                                        'Completed',
+                                        style:
+                                            GoogleFonts.openSans(fontSize: 12),
                                       ),
                                     ),
                                   ),
@@ -128,14 +123,10 @@ class OrderCompleted extends StatelessWidget {
                                                 WidgetStatePropertyAll(
                                                     klightGrey)),
                                         child: Text(
-                                          'orderpage.return'.tr(),
+                                          'Return',
                                           style: GoogleFonts.poppins(
                                             fontWeight: FontWeight.bold,
-                                            fontSize:
-                                                context.locale.languageCode ==
-                                                        'en'
-                                                    ? 12
-                                                    : 10,
+                                            fontSize: 12,
                                           ),
                                         ),
                                         onPressed: () {},

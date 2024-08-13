@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:timelines/timelines.dart';
 import 'vertical_time_line_widget.dart';
@@ -11,14 +10,14 @@ class VerticalTimeline extends StatelessWidget {
     return Timeline(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      children: [
+      children: const [
         TimeLineTileWidget(
           isPast: true,
           orderDateOrExpected: '01/01/2024',
           orderTime: '11:11 PM',
           isFirst: true,
           isLast: false,
-          title: 'orderpage.orderrecieved'.tr(),
+          title: 'Received',
         ),
         TimeLineTileWidget(
           isPast: true,
@@ -26,15 +25,15 @@ class VerticalTimeline extends StatelessWidget {
           orderTime: '11:11 PM',
           isFirst: false,
           isLast: false,
-          title: 'orderpage.orderpacked'.tr(),
+          title: 'Packed',
         ),
         TimeLineTileWidget(
           isPast: false,
-          orderDateOrExpected: 'orderpage.expected'.tr(args: ['01/01/2024']),
+          orderDateOrExpected: 'Expected',
           isFirst: false,
           isLast: true,
           orderTime: '11:11 PM',
-          title: 'orderpage.ordershipped'.tr(),
+          title: 'Shipped',
         ),
       ],
     );

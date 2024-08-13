@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
@@ -20,9 +19,8 @@ class LoginPage extends StatelessWidget {
             padding: const EdgeInsets.only(top: 40, left: 15),
             child: Text(
               'Welcome Back',
-              style: GoogleFonts.inter(
-                  fontSize: context.locale.languageCode == 'en' ? 45 : 30,
-                  fontWeight: FontWeight.bold),
+              style:
+                  GoogleFonts.inter(fontSize: 45, fontWeight: FontWeight.bold),
             ),
           ),
           kSizedBoxHeight20,

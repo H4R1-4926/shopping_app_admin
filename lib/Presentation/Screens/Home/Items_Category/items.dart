@@ -11,7 +11,7 @@ class ItemList extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Item Name',
+          'Items',
           style:
               GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 22),
         ),

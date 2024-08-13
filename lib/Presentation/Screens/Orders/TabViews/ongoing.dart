@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -96,13 +95,9 @@ class OrderOnGoing extends StatelessWidget {
                                             BorderRadius.circular(20)),
                                     child: Center(
                                       child: Text(
-                                        'orderpage.indelivery'.tr(),
-                                        style: GoogleFonts.openSans(
-                                            fontSize:
-                                                context.locale.languageCode ==
-                                                        'en'
-                                                    ? 12
-                                                    : 8),
+                                        'inDelivery',
+                                        style:
+                                            GoogleFonts.openSans(fontSize: 12),
                                       ),
                                     ),
                                   ),
@@ -149,14 +144,10 @@ class OrderOnGoing extends StatelessWidget {
                                         },
                                         child: Center(
                                           child: Text(
-                                            'orderpage.track'.tr(),
+                                            'Track',
                                             style: GoogleFonts.lato(
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: context.locale
-                                                            .languageCode ==
-                                                        'en'
-                                                    ? 13
-                                                    : 9,
+                                                fontSize: 13,
                                                 color: kwhite),
                                           ),
                                         ),

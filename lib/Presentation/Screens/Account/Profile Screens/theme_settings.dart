@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,7 +17,7 @@ class ThemeSettings extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text(
-              'profilepage.theme'.tr(),
+              'Theme',
               style: GoogleFonts.montserrat(
                   fontWeight: FontWeight.bold, fontSize: 20),
             ),
@@ -30,7 +29,7 @@ class ThemeSettings extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 5),
                   child: ListTile(
                     leading: Text(
-                      'profilepage.systemDefault'.tr(),
+                      'System Default',
                       style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w700, fontSize: 14),
                     ),
@@ -56,7 +55,7 @@ class ThemeSettings extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 5),
                   child: ListTile(
                     leading: Text(
-                      'themepage.light'.tr(),
+                      'Light',
                       style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w700, fontSize: 14),
                     ),
@@ -82,7 +81,7 @@ class ThemeSettings extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 5),
                   child: ListTile(
                     leading: Text(
-                      'themepage.dark'.tr(),
+                      'Dark',
                       style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w700, fontSize: 14),
                     ),
@@ -121,7 +120,7 @@ class ThemeSettings extends StatelessWidget {
                           : const WidgetStatePropertyAll(kblack),
                   fixedSize: const WidgetStatePropertyAll(Size(270, 50))),
               child: Text(
-                'apply'.tr(),
+                'Apply',
                 style: GoogleFonts.lato(
                     color: Theme.of(context).brightness == Brightness.dark
                         ? kblack

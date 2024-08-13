@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
@@ -41,15 +40,11 @@ class TimeLineTileWidget extends StatelessWidget {
                   Text(
                     title,
                     style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.bold,
-                        fontSize:
-                            context.locale.languageCode == 'en' ? 16 : 14),
+                        fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                   Text(
                     orderDateOrExpected,
-                    style: GoogleFonts.openSans(
-                        fontSize:
-                            context.locale.languageCode == 'en' ? 14 : 12),
+                    style: GoogleFonts.openSans(fontSize: 14),
                   )
                 ],
               ),

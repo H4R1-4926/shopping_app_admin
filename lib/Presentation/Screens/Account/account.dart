@@ -1,23 +1,16 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_share/flutter_share.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shopping_app_admin/Application/RadioButton/radio_button_bloc.dart';
+
 import 'package:shopping_app_admin/Application/Theme%20Bloc/theme_bloc_bloc.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
 import 'package:shopping_app_admin/Core/size.dart';
 import 'package:shopping_app_admin/Presentation/Login/login.dart';
 
-import 'package:shopping_app_admin/Presentation/Screens/Account/Profile%20Screens/edit_address_screen.dart';
-import 'package:shopping_app_admin/Presentation/Screens/Account/Profile%20Screens/edit_profile.dart';
-import 'package:shopping_app_admin/Presentation/Screens/Account/Profile%20Screens/help_centre.dart';
-import 'package:shopping_app_admin/Presentation/Screens/Account/Profile%20Screens/language_change_page.dart';
 import 'package:shopping_app_admin/Presentation/Screens/Account/Profile%20Screens/notification_settings.dart';
-import 'package:shopping_app_admin/Presentation/Screens/Account/Profile%20Screens/privacy_policy.dart';
-import 'package:shopping_app_admin/Presentation/Screens/Account/Profile%20Screens/terms_conditions.dart';
+
 import 'package:shopping_app_admin/Presentation/Screens/Account/Profile%20Screens/theme_settings.dart';
 
 import 'widgets/listtile_widget.dart';
@@ -34,7 +27,7 @@ class AccountPage extends StatelessWidget {
               ? kdarkbackground
               : kwhite,
           title: Text(
-            'profilepage.profile'.tr(),
+            'Settings',
             style: GoogleFonts.montserrat(
                 fontWeight: FontWeight.bold, fontSize: 20),
           ),
@@ -94,52 +87,8 @@ class AccountPage extends StatelessWidget {
             ),
             kSizedBoxHeight10,
             ListTileWidget(
-              prefixIcon: Iconsax.user_edit,
-              titleText: 'profilepage.editprofile'.tr(),
-              ontap: () {
-                Navigator.of(context).push(PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) =>
-                      const EditProfile(),
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) {
-                    var tween = Tween(
-                      begin: const Offset(1.0, 0.0),
-                      end: Offset.zero,
-                    ).chain(CurveTween(curve: Curves.easeIn));
-                    return SlideTransition(
-                      position: animation.drive(tween),
-                      child: child,
-                    );
-                  },
-                ));
-              },
-              trailIcon: true,
-            ),
-            ListTileWidget(
-              prefixIcon: Iconsax.location,
-              titleText: 'profilepage.address'.tr(),
-              ontap: () {
-                Navigator.of(context).push(PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) =>
-                      const EditAddress(),
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) {
-                    var tween = Tween(
-                      begin: const Offset(1.0, 0.0),
-                      end: Offset.zero,
-                    ).chain(CurveTween(curve: Curves.easeIn));
-                    return SlideTransition(
-                      position: animation.drive(tween),
-                      child: child,
-                    );
-                  },
-                ));
-              },
-              trailIcon: true,
-            ),
-            ListTileWidget(
               prefixIcon: Iconsax.notification,
-              titleText: 'profilepage.notification'.tr(),
+              titleText: 'Notifications',
               ontap: () {
                 Navigator.of(context).push(PageRouteBuilder(
                   pageBuilder: (context, animation, secondaryAnimation) =>
@@ -159,44 +108,12 @@ class AccountPage extends StatelessWidget {
               },
               trailIcon: true,
             ),
-            BlocBuilder<RadioButtonBloc, RadioButtonState>(
-              builder: (context, state) {
-                return ListTileWidget(
-                  prefixIcon: Iconsax.language_square,
-                  titleText: 'profilepage.language'.tr(),
-                  secondText:
-                      state.value == 1 ? 'English (US)' : 'മലയാളം (Malayalam)',
-                  ontap: () {
-                    Navigator.of(context).push(PageRouteBuilder(
-                      pageBuilder: (context, animation, secondaryAnimation) =>
-                          const LanguageSettings(),
-                      transitionsBuilder:
-                          (context, animation, secondaryAnimation, child) {
-                        var tween = Tween(
-                          begin: const Offset(1.0, 0.0),
-                          end: Offset.zero,
-                        ).chain(CurveTween(curve: Curves.easeIn));
-                        return SlideTransition(
-                          position: animation.drive(tween),
-                          child: child,
-                        );
-                      },
-                    ));
-                  },
-                  trailIcon: true,
-                );
-              },
-            ),
             BlocBuilder<ThemeBlocBloc, ThemeBlocState>(
               builder: (context, state) {
                 return ListTileWidget(
                   prefixIcon: Iconsax.eye,
-                  titleText: 'profilepage.theme'.tr(),
-                  secondText: state.value == 1
-                      ? 'themepage.systemDefault'.tr()
-                      : state.value == 2
-                          ? 'themepage.blight'.tr()
-                          : 'themepage.bdark'.tr(),
+                  titleText: 'Theme',
+                  secondText: ' ',
                   ontap: () {
                     Navigator.of(context).push(PageRouteBuilder(
                       pageBuilder: (context, animation, secondaryAnimation) =>
@@ -219,83 +136,9 @@ class AccountPage extends StatelessWidget {
               },
             ),
             ListTileWidget(
-              prefixIcon: Iconsax.lock,
-              titleText: 'profilepage.privacypolicy'.tr(),
-              ontap: () {
-                Navigator.of(context).push(PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) =>
-                      const PrivacyPolicyPage(),
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) {
-                    var tween = Tween(
-                      begin: const Offset(1.0, 0.0),
-                      end: Offset.zero,
-                    ).chain(CurveTween(curve: Curves.easeIn));
-                    return SlideTransition(
-                      position: animation.drive(tween),
-                      child: child,
-                    );
-                  },
-                ));
-              },
-              trailIcon: true,
-            ),
-            ListTileWidget(
-              prefixIcon: Iconsax.note_21,
-              titleText: 'profilepage.termsandcondition'.tr(),
-              ontap: () {
-                Navigator.of(context).push(PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) =>
-                      const TermsAndConditions(),
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) {
-                    var tween = Tween(
-                      begin: const Offset(1.0, 0.0),
-                      end: Offset.zero,
-                    ).chain(CurveTween(curve: Curves.easeIn));
-                    return SlideTransition(
-                      position: animation.drive(tween),
-                      child: child,
-                    );
-                  },
-                ));
-              },
-              trailIcon: true,
-            ),
-            ListTileWidget(
-              prefixIcon: Iconsax.info_circle,
-              titleText: 'profilepage.helpcentre'.tr(),
-              ontap: () {
-                Navigator.of(context).push(PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) =>
-                      const HelpCentrePage(),
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) {
-                    var tween = Tween(
-                      begin: const Offset(1.0, 0.0),
-                      end: Offset.zero,
-                    ).chain(CurveTween(curve: Curves.easeIn));
-                    return SlideTransition(
-                      position: animation.drive(tween),
-                      child: child,
-                    );
-                  },
-                ));
-              },
-              trailIcon: true,
-            ),
-            ListTileWidget(
-              prefixIcon: Iconsax.people,
-              titleText: 'profilepage.invite'.tr(),
-              ontap: () {
-                FlutterShare.share(title: 'Example', text: 'Invite Link');
-              },
-              trailIcon: true,
-            ),
-            ListTileWidget(
               prefixIcon: Iconsax.logout,
               iconColour: Colors.red,
-              titleText: 'profilepage.logout'.tr(),
+              titleText: 'Logout',
               ontap: () {
                 showModalBottomSheet(
                   showDragHandle: true,
@@ -328,7 +171,7 @@ class AccountPage extends StatelessWidget {
                         children: [
                           Center(
                             child: Text(
-                              'profilepage.logout'.tr(),
+                              'Logout',
                               style: GoogleFonts.poppins(
                                   color: Colors.red,
                                   fontSize: 23,
@@ -343,7 +186,7 @@ class AccountPage extends StatelessWidget {
                           kSizedBoxHeight20,
                           Center(
                             child: Text(
-                              'logoutpopup.sure'.tr(),
+                              'Are you sure',
                               style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.bold,
                               ),
@@ -367,7 +210,7 @@ class AccountPage extends StatelessWidget {
                                           WidgetStatePropertyAll(kwhite),
                                     ),
                                     child: Text(
-                                      'logoutpopup.cancel'.tr(),
+                                      'cancel',
                                       style: GoogleFonts.lato(
                                           fontSize: 14,
                                           color: kblack,
@@ -397,7 +240,7 @@ class AccountPage extends StatelessWidget {
                                             const WidgetStatePropertyAll(
                                                 kwhite)),
                                     child: Text(
-                                      'logoutpopup.yes'.tr(),
+                                      'yes',
                                       style: GoogleFonts.lato(
                                           fontSize: 14,
                                           fontWeight: FontWeight.bold),

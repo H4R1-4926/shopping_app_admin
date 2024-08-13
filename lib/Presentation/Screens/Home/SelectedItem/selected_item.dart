@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 import 'package:flutter/material.dart';
 
@@ -110,7 +109,7 @@ class _SelectedItemPageState extends State<SelectedItemPage> {
             Padding(
               padding: const EdgeInsets.only(right: 230, top: 10),
               child: Text(
-                'selecteditem.description'.tr(),
+                'Description',
                 style:
                     GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.w900),
               ),
@@ -131,10 +130,9 @@ class _SelectedItemPageState extends State<SelectedItemPage> {
             Padding(
               padding: const EdgeInsets.only(right: 270, top: 10),
               child: Text(
-                'selecteditem.color'.tr(),
-                style: GoogleFonts.lato(
-                    fontSize: context.locale.languageCode == 'en' ? 19 : 15,
-                    fontWeight: FontWeight.w900),
+                'Color',
+                style:
+                    GoogleFonts.lato(fontSize: 19, fontWeight: FontWeight.w900),
               ),
             ),
             SizedBox(
@@ -170,14 +168,14 @@ class _SelectedItemPageState extends State<SelectedItemPage> {
               endIndent: 23,
             ),
             Padding(
-              padding: EdgeInsets.only(
-                  right: 270,
-                  top: 15,
-                  left: context.locale.languageCode == 'en' ? 0 : 10),
+              padding: const EdgeInsets.only(
+                right: 270,
+                top: 15,
+              ),
               child: Text(
-                'selecteditem.instock'.tr(),
+                'Stock',
                 style: GoogleFonts.lato(
-                    fontSize: context.locale.languageCode == 'en' ? 17 : 10,
+                    fontSize: 17,
                     fontWeight: FontWeight.w900,
                     color: Colors.greenAccent),
               ),
@@ -259,7 +257,7 @@ class _SelectedItemPageState extends State<SelectedItemPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('selecteditem.price'.tr(),
+                                Text('Price',
                                     style: GoogleFonts.poppins(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold)),
@@ -278,7 +276,7 @@ class _SelectedItemPageState extends State<SelectedItemPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('selecteditem.quantity'.tr(),
+                                Text('Quantity',
                                     style: GoogleFonts.poppins(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold)),
@@ -434,7 +432,7 @@ class _SelectedItemPageState extends State<SelectedItemPage> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'selecteditem.totalPrize'.tr(),
+                                            'Total Prize',
                                             style: GoogleFonts.lato(
                                                 fontSize: 13, color: kGrey),
                                           ),
@@ -463,15 +461,11 @@ class _SelectedItemPageState extends State<SelectedItemPage> {
                                                 : const WidgetStatePropertyAll(
                                                     kblack)),
                                         child: Text(
-                                          'selecteditem.addtocart'.tr(),
+                                          'Add to cart',
                                           style: GoogleFonts.lato(
                                               color: kwhite,
                                               fontWeight: FontWeight.bold,
-                                              fontSize:
-                                                  context.locale.languageCode ==
-                                                          'en'
-                                                      ? 16
-                                                      : 10),
+                                              fontSize: 16),
                                         ),
                                       ),
                                     )
@@ -492,7 +486,7 @@ class _SelectedItemPageState extends State<SelectedItemPage> {
                   ),
                   fixedSize: WidgetStatePropertyAll(Size(300, 45))),
               child: Text(
-                'selecteditem.addtocart'.tr(),
+                'Add to cart',
                 style: GoogleFonts.roboto(
                     fontSize: 15, fontWeight: FontWeight.w700, color: kblack),
               ),

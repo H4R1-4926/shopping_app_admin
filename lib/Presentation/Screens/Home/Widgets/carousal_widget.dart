@@ -1,5 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:easy_localization/easy_localization.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
@@ -29,10 +29,9 @@ class _TopContainerWidgetState extends State<TopContainerWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'homepage.mostpopular'.tr(),
+                  'Most popular',
                   style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.bold,
-                      fontSize: context.locale.languageCode == 'en' ? 20 : 17),
+                      fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 TextButton(
                     onPressed: () {},

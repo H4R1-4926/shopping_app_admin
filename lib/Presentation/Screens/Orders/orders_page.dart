@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
@@ -16,7 +15,7 @@ class OrdersPage extends StatelessWidget {
           appBar: AppBar(
             automaticallyImplyLeading: false,
             title: Text(
-              'orderpage.myorder'.tr(),
+              'Orders',
               style: GoogleFonts.montserrat(
                   fontWeight: FontWeight.bold, fontSize: 20),
             ),
@@ -33,12 +32,12 @@ class OrdersPage extends StatelessWidget {
               ),
             ),
             bottom: TabBar(
-              tabs: [
+              tabs: const [
                 Tab(
-                  text: 'orderpage.ongoing'.tr(),
+                  text: 'New Order',
                 ),
                 Tab(
-                  text: 'orderpage.completed'.tr(),
+                  text: 'OnGoing',
                 )
               ],
               indicatorColor: Theme.of(context).brightness == Brightness.dark
