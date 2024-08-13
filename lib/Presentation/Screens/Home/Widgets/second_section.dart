@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:shopping_app_admin/Core/colors.dart';
+import 'package:shopping_app_admin/Presentation/Screens/Home/Items_Category/items.dart';
+import 'package:shopping_app_admin/Presentation/Screens/Orders/orders_page.dart';
 
 class GridPage extends StatelessWidget {
   const GridPage({super.key});
@@ -22,17 +24,55 @@ class GridPage extends StatelessWidget {
                 crossAxisSpacing: 25,
                 childAspectRatio: 0.8),
             childrenDelegate: SliverChildListDelegate([
-              Container(
-                color: kGrey,
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ItemList(),
+                      ));
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      image: const DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage('assets/img/items.jpg')),
+                      borderRadius: BorderRadius.circular(18),
+                      border: Border.all()),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const OrdersPage(),
+                      ));
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      image: const DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage('assets/img/orders.jpg')),
+                      borderRadius: BorderRadius.circular(18),
+                      border: Border.all()),
+                ),
               ),
               Container(
-                color: kGrey,
+                decoration: BoxDecoration(
+                    image: const DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage('assets/img/settings.jpg')),
+                    borderRadius: BorderRadius.circular(18),
+                    border: Border.all()),
               ),
               Container(
-                color: kGrey,
-              ),
-              Container(
-                color: kGrey,
+                decoration: BoxDecoration(
+                    image: const DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage('assets/img/extra.jpg')),
+                    borderRadius: BorderRadius.circular(18),
+                    border: Border.all()),
               ),
             ])));
   }

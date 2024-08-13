@@ -10,16 +10,8 @@ import 'Application/RadioButton/radio_button_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
-  runApp(EasyLocalization(
-      supportedLocales: const [
-        Locale("en", 'US'),
-        Locale("ml", 'IN'),
-      ],
-      path: 'assets/translations',
-      fallbackLocale: const Locale("en", 'US'),
-      startLocale: const Locale("en", 'US'),
-      child: const MainApp()));
+
+  runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
