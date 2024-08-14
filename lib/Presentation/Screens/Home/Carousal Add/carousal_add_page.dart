@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
 import 'package:shopping_app_admin/Core/lists.dart';
 
@@ -19,10 +18,7 @@ class CarousalManager extends StatelessWidget {
         ),
         actions: [
           IconButton(
-              onPressed: () {
-                final picker = ImagePicker();
-                picker.pickMedia();
-              },
+              onPressed: () {},
               icon: Icon(
                 size: 35,
                 Icons.add,
