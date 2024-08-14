@@ -31,112 +31,122 @@ class ItemList extends StatelessWidget {
                 ))
           ],
         ),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-              child: TextField(
-                controller: categoryController,
-                style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
-                readOnly: true,
-                decoration: InputDecoration(
-                    suffixIcon: category.isEmpty
-                        ? const SizedBox()
-                        : DropdownButton(
-                            underline: const SizedBox(),
-                            icon: const Icon(Icons.arrow_drop_down_rounded),
-                            iconEnabledColor:
-                                Theme.of(context).brightness == Brightness.dark
-                                    ? kGrey
-                                    : kblack,
-                            iconSize: 32,
-                            borderRadius: BorderRadius.circular(18),
-                            style: GoogleFonts.lato(
-                                color: Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? kwhite
-                                    : kblack,
-                                fontWeight: FontWeight.bold),
-                            items: category
-                                .map((e) => DropdownMenuItem(
-                                      value: e,
-                                      child: Text(e),
-                                    ))
-                                .toList(),
-                            onChanged: (value) {
-                              categoryController.text = value.toString();
-                            },
-                          ),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(21),
-                        borderSide: const BorderSide(color: klightGrey)),
-                    filled: true,
-                    fillColor: klightGrey),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                child: TextField(
+                  controller: categoryController,
+                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
+                  readOnly: true,
+                  decoration: InputDecoration(
+                      suffixIcon: category.isEmpty
+                          ? const SizedBox()
+                          : DropdownButton(
+                              underline: const SizedBox(),
+                              icon: const Icon(Icons.arrow_drop_down_rounded),
+                              iconEnabledColor: Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? kGrey
+                                  : kblack,
+                              iconSize: 32,
+                              borderRadius: BorderRadius.circular(18),
+                              style: GoogleFonts.lato(
+                                  color: Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? kwhite
+                                      : kblack,
+                                  fontWeight: FontWeight.bold),
+                              items: category
+                                  .map((e) => DropdownMenuItem(
+                                        value: e,
+                                        child: Text(e),
+                                      ))
+                                  .toList(),
+                              onChanged: (value) {
+                                categoryController.text = value.toString();
+                              },
+                            ),
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(21),
+                          borderSide: const BorderSide(color: klightGrey)),
+                      filled: true,
+                      fillColor: klightGrey),
+                ),
               ),
-            ),
-            kSizedBoxHeight20,
-            Expanded(
-                child: category.isEmpty
-                    ? const Center(
-                        child: Text('Selecet An category'),
-                      )
-                    : DataTable(
-                        dividerThickness: 1,
-                        border: const TableBorder(
-                            top: BorderSide(),
-                            verticalInside: BorderSide(),
-                            bottom: BorderSide()),
-                        columnSpacing: 30,
-                        columns: const [
-                          DataColumn(
-                            label: Text('No.'),
-                          ),
-                          DataColumn(
-                            label: Text('Item\nName'),
-                          ),
-                          DataColumn(
-                            label: Text('Item\nPrice'),
-                          ),
-                          DataColumn(
-                            label: Text('Category'),
-                          ),
-                          DataColumn(
-                            label: Text('Stock\nStatus'),
-                          ),
-                          DataColumn(
-                            label: Text('{ }'),
-                          ),
-                        ],
-                        rows: List.generate(10, (index) {
-                          return DataRow(
-                            cells: [
-                              DataCell(
-                                Text('${index + 1}'),
+              kSizedBoxHeight20,
+              category.isEmpty
+                  ? const Center(
+                      child: Text('Selecet An category'),
+                    )
+                  : DataTable(
+                      headingRowColor:
+                          const WidgetStatePropertyAll(kdarkbackground),
+                      headingTextStyle: GoogleFonts.lato(
+                          color: kwhite,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold),
+                      dividerThickness: 1,
+                      border: const TableBorder(
+                          top: BorderSide(),
+                          verticalInside: BorderSide(),
+                          bottom: BorderSide()),
+                      columnSpacing: 30,
+                      columns: const [
+                        DataColumn(
+                          label: Text('No.'),
+                        ),
+                        DataColumn(
+                          label: Text('Item\nName'),
+                        ),
+                        DataColumn(
+                          label: Text('Item\nPrice'),
+                        ),
+                        DataColumn(
+                          label: Text('Category'),
+                        ),
+                        DataColumn(
+                          label: Text('Stock\nStatus'),
+                        ),
+                        DataColumn(
+                          label: Text('{ }'),
+                        ),
+                      ],
+                      rows: List.generate(20, (index) {
+                        return DataRow(
+                          cells: [
+                            DataCell(
+                              Text('${index + 1}'),
+                            ),
+                            const DataCell(
+                              Text('Name'),
+                            ),
+                            const DataCell(
+                              Text('999/-'),
+                            ),
+                            const DataCell(
+                              Text('Protien'),
+                            ),
+                            const DataCell(
+                              Text('In Stock',
+                                  style: TextStyle(color: Colors.green)),
+                            ),
+                            const DataCell(
+                              Text(
+                                'Edit',
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 6, 123, 240)),
                               ),
-                              const DataCell(
-                                Text('Name'),
-                              ),
-                              const DataCell(
-                                Text('999/-'),
-                              ),
-                              const DataCell(
-                                Text('Protien'),
-                              ),
-                              const DataCell(
-                                Text('In Stock',
-                                    style: TextStyle(color: Colors.green)),
-                              ),
-                              const DataCell(
-                                Text(
-                                  'Edit',
-                                  style: TextStyle(
-                                      color: Color.fromARGB(255, 6, 123, 240)),
-                                ),
-                              ),
-                            ],
-                          );
-                        })))
-          ],
+                            ),
+                          ],
+                        );
+                      }),
+                    ),
+              kSizedBoxHeight30
+            ],
+          ),
         ));
   }
 }
