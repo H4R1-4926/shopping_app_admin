@@ -3,6 +3,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
+import 'package:shopping_app_admin/Core/lists.dart';
+import 'package:shopping_app_admin/Presentation/Screens/Home/Carousal%20Add/carousal_add_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class TopContainerWidget extends StatefulWidget {
@@ -34,7 +36,23 @@ class _TopContainerWidgetState extends State<TopContainerWidget> {
                       fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(PageRouteBuilder(
+                        pageBuilder: (context, animation, secondaryAnimation) =>
+                            const CarousalManager(),
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                          var tween = Tween(
+                            begin: const Offset(1.0, 0.0),
+                            end: Offset.zero,
+                          ).chain(CurveTween(curve: Curves.easeIn));
+                          return SlideTransition(
+                            position: animation.drive(tween),
+                            child: child,
+                          );
+                        },
+                      ));
+                    },
                     child: Text(
                       'Add',
                       style: GoogleFonts.poppins(
@@ -59,7 +77,7 @@ class _TopContainerWidgetState extends State<TopContainerWidget> {
                       top: 10,
                     ),
                     child: CarouselSlider.builder(
-                      itemCount: 5,
+                      itemCount: kcarousalList.length,
                       itemBuilder: (context, index, realIndex) {
                         return Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -69,9 +87,9 @@ class _TopContainerWidgetState extends State<TopContainerWidget> {
                             decoration: BoxDecoration(
                                 color: kwhite,
                                 borderRadius: BorderRadius.circular(20),
-                                image: const DecorationImage(
+                                image: DecorationImage(
                                     fit: BoxFit.fill,
-                                    image: AssetImage('assets/img/demo.webp'))),
+                                    image: AssetImage(kcarousalList[index]))),
                           ),
                         );
                       },
@@ -96,7 +114,7 @@ class _TopContainerWidgetState extends State<TopContainerWidget> {
                               activeDotColor: Color.fromARGB(255, 50, 50, 50),
                               spacing: 8),
                           activeIndex: _current,
-                          count: 5)),
+                          count: kcarousalList.length)),
                 )
               ],
             ),
