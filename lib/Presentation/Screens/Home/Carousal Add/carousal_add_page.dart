@@ -19,7 +19,7 @@ class CarousalManager extends StatelessWidget {
         ),
         actions: [
           IconButton(
-              onPressed: () async {
+              onPressed: () {
                 final picker = ImagePicker();
                 picker.pickMedia();
               },
