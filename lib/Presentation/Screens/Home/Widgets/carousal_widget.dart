@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
+import 'package:shopping_app_admin/Core/img.dart';
 import 'package:shopping_app_admin/Core/lists.dart';
 import 'package:shopping_app_admin/Presentation/Screens/Home/Carousal%20Add/carousal_add_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -77,7 +78,7 @@ class _TopContainerWidgetState extends State<TopContainerWidget> {
                       top: 10,
                     ),
                     child: CarouselSlider.builder(
-                      itemCount: kcarousalList.length,
+                      itemCount: 5,
                       itemBuilder: (context, index, realIndex) {
                         return Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -87,9 +88,9 @@ class _TopContainerWidgetState extends State<TopContainerWidget> {
                             decoration: BoxDecoration(
                                 color: kwhite,
                                 borderRadius: BorderRadius.circular(20),
-                                image: DecorationImage(
+                                image: const DecorationImage(
                                     fit: BoxFit.fill,
-                                    image: AssetImage(kcarousalList[index]))),
+                                    image: AssetImage(kDemoImg))),
                           ),
                         );
                       },
@@ -114,7 +115,7 @@ class _TopContainerWidgetState extends State<TopContainerWidget> {
                               activeDotColor: Color.fromARGB(255, 50, 50, 50),
                               spacing: 8),
                           activeIndex: _current,
-                          count: kcarousalList.length)),
+                          count: 5)),
                 )
               ],
             ),
