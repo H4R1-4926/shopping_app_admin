@@ -27,16 +27,116 @@ class NotificationPage extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {
-                showModalBottomSheet(
-                  showDragHandle: true,
-                  backgroundColor: kwhite,
-                  context: context,
-                  builder: (context) => Container(
-                    height: 380,
-                    width: double.infinity,
-                    color: kwhite,
-                  ),
-                );
+                showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                          backgroundColor: kwhite,
+                          title: Center(
+                            child: Text(
+                              'New Notification',
+                              style: GoogleFonts.lato(
+                                  fontWeight: FontWeight.bold, fontSize: 20),
+                            ),
+                          ),
+                          content: SizedBox(
+                            height: 240,
+                            width: double.infinity,
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 8),
+                                  child: TextField(
+                                    maxLines: 1,
+                                    decoration: InputDecoration(
+                                        hintText: 'Title',
+                                        enabledBorder: OutlineInputBorder(
+                                            borderSide: const BorderSide(
+                                                color: klightGrey),
+                                            borderRadius:
+                                                BorderRadius.circular(22)),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderSide: const BorderSide(
+                                                color: klightGrey),
+                                            borderRadius:
+                                                BorderRadius.circular(22)),
+                                        fillColor: klightGrey,
+                                        filled: true),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 8),
+                                  child: TextField(
+                                    maxLines: 2,
+                                    decoration: InputDecoration(
+                                        hintText: 'Description',
+                                        enabledBorder: OutlineInputBorder(
+                                            borderSide: const BorderSide(
+                                                color: klightGrey),
+                                            borderRadius:
+                                                BorderRadius.circular(22)),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderSide: const BorderSide(
+                                                color: klightGrey),
+                                            borderRadius:
+                                                BorderRadius.circular(22)),
+                                        fillColor: klightGrey,
+                                        filled: true),
+                                  ),
+                                ),
+                                const DropButton(),
+                              ],
+                            ),
+                          ),
+                          actions: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    style: const ButtonStyle(
+                                      surfaceTintColor:
+                                          WidgetStatePropertyAll(kwhite),
+                                      fixedSize:
+                                          WidgetStatePropertyAll(Size(100, 50)),
+                                      backgroundColor:
+                                          WidgetStatePropertyAll(kwhite),
+                                    ),
+                                    child: Text(
+                                      'No',
+                                      style: GoogleFonts.lato(
+                                          fontSize: 14, color: kblack),
+                                    )),
+                                ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    style: ButtonStyle(
+                                        fixedSize: const WidgetStatePropertyAll(
+                                            Size(100, 50)),
+                                        backgroundColor:
+                                            Theme.of(context).brightness ==
+                                                    Brightness.dark
+                                                ? const WidgetStatePropertyAll(
+                                                    kdarkcolor3)
+                                                : const WidgetStatePropertyAll(
+                                                    kblack),
+                                        foregroundColor:
+                                            const WidgetStatePropertyAll(
+                                                kwhite)),
+                                    child: Text(
+                                      'Yes',
+                                      style: GoogleFonts.lato(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold),
+                                    ))
+                              ],
+                            ),
+                          ],
+                        ));
               },
               icon: Icon(
                 size: 30,
@@ -89,8 +189,18 @@ class NotificationPage extends StatelessWidget {
                           maxRadius: 36,
                           backgroundColor:
                               Theme.of(context).brightness == Brightness.dark
+                                  ? kblack
+                                  : kwhite,
+                          child: Center(
+                            child: Icon(
+                              Icons.percent,
+                              size: 35,
+                              color: Theme.of(context).brightness ==
+                                      Brightness.dark
                                   ? kwhite
                                   : kblack,
+                            ),
+                          ),
                         ),
                         const SizedBox(
                           width: 25,
@@ -122,5 +232,53 @@ class NotificationPage extends StatelessWidget {
         itemCount: 10,
       ),
     );
+  }
+}
+
+class DropButton extends StatefulWidget {
+  const DropButton({
+    super.key,
+  });
+
+  @override
+  State<DropButton> createState() => _DropState();
+}
+
+class _DropState extends State<DropButton> {
+  final List iconsList = [
+    Icons.percent,
+    Icons.money_outlined,
+    Icons.local_offer_outlined
+  ];
+  IconData? icon = Icons.percent;
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+        leading: Icon(icon),
+        trailing: DropdownButton(
+          dropdownColor: kwhite,
+          underline: const SizedBox(),
+          icon: const Icon(Icons.arrow_drop_down_rounded),
+          iconEnabledColor:
+              Theme.of(context).brightness == Brightness.dark ? kGrey : kblack,
+          iconSize: 32,
+          borderRadius: BorderRadius.circular(18),
+          style: GoogleFonts.lato(
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? kwhite
+                  : kblack,
+              fontWeight: FontWeight.bold),
+          items: iconsList
+              .map((e) => DropdownMenuItem(
+                    value: e,
+                    child: Icon(e),
+                  ))
+              .toList(),
+          onChanged: (value) {
+            setState(() {
+              icon = value as IconData?;
+            });
+          },
+        ));
   }
 }
