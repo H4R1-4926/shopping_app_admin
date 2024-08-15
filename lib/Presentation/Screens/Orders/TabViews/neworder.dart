@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
-import 'package:shopping_app_admin/Presentation/Screens/Orders/Track%20Order/track_order_page.dart';
+import 'package:shopping_app_admin/Presentation/Screens/Orders/Check%20Order/check_order_page.dart';
 
 class NewOrderPage extends StatelessWidget {
   const NewOrderPage({super.key});
@@ -48,7 +48,7 @@ class NewOrderPage extends StatelessWidget {
                             Navigator.of(context).push(PageRouteBuilder(
                               pageBuilder:
                                   (context, animation, secondaryAnimation) =>
-                                      const TrackOrderPage(),
+                                      const CheckOrderPage(),
                               transitionsBuilder: (context, animation,
                                   secondaryAnimation, child) {
                                 var tween = Tween(
