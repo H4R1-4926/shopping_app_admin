@@ -24,7 +24,28 @@ class NotificationPage extends StatelessWidget {
           style:
               GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 20),
         ),
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.add))],
+        actions: [
+          IconButton(
+              onPressed: () {
+                showModalBottomSheet(
+                  showDragHandle: true,
+                  backgroundColor: kwhite,
+                  context: context,
+                  builder: (context) => Container(
+                    height: 380,
+                    width: double.infinity,
+                    color: kwhite,
+                  ),
+                );
+              },
+              icon: Icon(
+                size: 30,
+                Icons.add,
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? kwhite
+                    : kblack,
+              ))
+        ],
       ),
       body: ListView.builder(
         itemBuilder: (context, index) {
