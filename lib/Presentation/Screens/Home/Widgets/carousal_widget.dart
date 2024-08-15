@@ -3,8 +3,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
-import 'package:shopping_app_admin/Core/img.dart';
-import 'package:shopping_app_admin/Core/lists.dart';
 import 'package:shopping_app_admin/Presentation/Screens/Home/Carousal%20Add/carousal_add_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
