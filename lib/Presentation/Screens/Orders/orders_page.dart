@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
 import 'package:shopping_app_admin/Presentation/Screens/Orders/TabViews/completed.dart';
+import 'package:shopping_app_admin/Presentation/Screens/Orders/TabViews/neworder.dart';
 import 'package:shopping_app_admin/Presentation/Screens/Orders/TabViews/ongoing.dart';
 
 class OrdersPage extends StatelessWidget {
@@ -10,7 +11,7 @@ class OrdersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
@@ -38,7 +39,10 @@ class OrdersPage extends StatelessWidget {
                 ),
                 Tab(
                   text: 'OnGoing',
-                )
+                ),
+                Tab(
+                  text: 'Completed',
+                ),
               ],
               indicatorColor: Theme.of(context).brightness == Brightness.dark
                   ? kwhite
@@ -56,7 +60,8 @@ class OrdersPage extends StatelessWidget {
                   fontWeight: FontWeight.w500, fontSize: 12, color: kGrey),
             ),
           ),
-          body: const TabBarView(children: [OrderOnGoing(), OrderCompleted()])),
+          body: const TabBarView(
+              children: [NewOrderPage(), OrderOnGoing(), OrderCompleted()])),
     );
   }
 }
