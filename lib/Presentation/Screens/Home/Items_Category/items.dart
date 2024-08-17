@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
 import 'package:shopping_app_admin/Core/size.dart';
+import 'package:shopping_app_admin/Presentation/Screens/Home/Items_Category/add_item.dart';
 
 class ItemList extends StatelessWidget {
   const ItemList({super.key});
@@ -21,7 +22,23 @@ class ItemList extends StatelessWidget {
           ),
           actions: [
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        const ItemAddPage(),
+                    transitionsBuilder:
+                        (context, animation, secondaryAnimation, child) {
+                      var tween = Tween(
+                        begin: const Offset(1.0, 0.0),
+                        end: Offset.zero,
+                      ).chain(CurveTween(curve: Curves.easeIn));
+                      return SlideTransition(
+                        position: animation.drive(tween),
+                        child: child,
+                      );
+                    },
+                  ));
+                },
                 icon: Icon(
                   size: 35,
                   Icons.add,
