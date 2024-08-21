@@ -110,7 +110,7 @@ class ItemList extends StatelessWidget {
                           top: BorderSide(),
                           verticalInside: BorderSide(),
                           bottom: BorderSide()),
-                      columnSpacing: 30,
+                      columnSpacing: 32,
                       columns: const [
                         DataColumn(
                           label: Text('No.'),
