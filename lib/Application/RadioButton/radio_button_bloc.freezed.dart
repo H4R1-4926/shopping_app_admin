@@ -50,7 +50,9 @@ mixin _$RadioButtonEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RadioButtonEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RadioButtonEventCopyWith<RadioButtonEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -74,6 +76,8 @@ class _$RadioButtonEventCopyWithImpl<$Res, $Val extends RadioButtonEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RadioButtonEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +111,8 @@ class __$$OnClickedImplCopyWithImpl<$Res>
       _$OnClickedImpl _value, $Res Function(_$OnClickedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RadioButtonEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,7 +151,9 @@ class _$OnClickedImpl implements _OnClicked {
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RadioButtonEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OnClickedImplCopyWith<_$OnClickedImpl> get copyWith =>
@@ -213,8 +221,11 @@ abstract class _OnClicked implements RadioButtonEvent {
 
   @override
   int get value;
+
+  /// Create a copy of RadioButtonEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OnClickedImplCopyWith<_$OnClickedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -223,7 +234,9 @@ abstract class _OnClicked implements RadioButtonEvent {
 mixin _$RadioButtonState {
   int get value => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RadioButtonState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RadioButtonStateCopyWith<RadioButtonState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -247,6 +260,8 @@ class _$RadioButtonStateCopyWithImpl<$Res, $Val extends RadioButtonState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RadioButtonState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -280,6 +295,8 @@ class __$$RadioButtonStateImplCopyWithImpl<$Res>
       $Res Function(_$RadioButtonStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RadioButtonState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -318,7 +335,9 @@ class _$RadioButtonStateImpl implements _RadioButtonState {
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RadioButtonState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RadioButtonStateImplCopyWith<_$RadioButtonStateImpl> get copyWith =>
@@ -332,8 +351,11 @@ abstract class _RadioButtonState implements RadioButtonState {
 
   @override
   int get value;
+
+  /// Create a copy of RadioButtonState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RadioButtonStateImplCopyWith<_$RadioButtonStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -56,7 +56,9 @@ mixin _$ThemeBlocEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ThemeBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ThemeBlocEventCopyWith<ThemeBlocEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -80,6 +82,8 @@ class _$ThemeBlocEventCopyWithImpl<$Res, $Val extends ThemeBlocEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ThemeBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -113,6 +117,8 @@ class __$$OnTapImplCopyWithImpl<$Res>
       _$OnTapImpl _value, $Res Function(_$OnTapImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ThemeBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,7 +157,9 @@ class _$OnTapImpl implements OnTap {
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ThemeBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OnTapImplCopyWith<_$OnTapImpl> get copyWith =>
@@ -225,8 +233,11 @@ abstract class OnTap implements ThemeBlocEvent {
 
   @override
   int get value;
+
+  /// Create a copy of ThemeBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OnTapImplCopyWith<_$OnTapImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -250,6 +261,8 @@ class __$$OnSelectedImplCopyWithImpl<$Res>
       _$OnSelectedImpl _value, $Res Function(_$OnSelectedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ThemeBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -288,7 +301,9 @@ class _$OnSelectedImpl implements OnSelected {
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ThemeBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OnSelectedImplCopyWith<_$OnSelectedImpl> get copyWith =>
@@ -362,8 +377,11 @@ abstract class OnSelected implements ThemeBlocEvent {
 
   @override
   int get value;
+
+  /// Create a copy of ThemeBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OnSelectedImplCopyWith<_$OnSelectedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -373,7 +391,9 @@ mixin _$ThemeBlocState {
   bool get isTrue => throw _privateConstructorUsedError;
   int get value => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ThemeBlocState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ThemeBlocStateCopyWith<ThemeBlocState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -397,6 +417,8 @@ class _$ThemeBlocStateCopyWithImpl<$Res, $Val extends ThemeBlocState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ThemeBlocState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -435,6 +457,8 @@ class __$$ThemeBlocStateImplCopyWithImpl<$Res>
       _$ThemeBlocStateImpl _value, $Res Function(_$ThemeBlocStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ThemeBlocState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -481,7 +505,9 @@ class _$ThemeBlocStateImpl implements _ThemeBlocState {
   @override
   int get hashCode => Object.hash(runtimeType, isTrue, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ThemeBlocState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ThemeBlocStateImplCopyWith<_$ThemeBlocStateImpl> get copyWith =>
@@ -498,8 +524,11 @@ abstract class _ThemeBlocState implements ThemeBlocState {
   bool get isTrue;
   @override
   int get value;
+
+  /// Create a copy of ThemeBlocState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ThemeBlocStateImplCopyWith<_$ThemeBlocStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
