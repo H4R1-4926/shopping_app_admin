@@ -16,20 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$VisibleEvent {
-  String get value => throw _privateConstructorUsedError;
+  String? get value => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String value) onChanged,
+    required TResult Function(String? value) onChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String value)? onChanged,
+    TResult? Function(String? value)? onChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String value)? onChanged,
+    TResult Function(String? value)? onChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,7 +63,7 @@ abstract class $VisibleEventCopyWith<$Res> {
           VisibleEvent value, $Res Function(VisibleEvent) then) =
       _$VisibleEventCopyWithImpl<$Res, VisibleEvent>;
   @useResult
-  $Res call({String value});
+  $Res call({String? value});
 }
 
 /// @nodoc
@@ -81,13 +81,13 @@ class _$VisibleEventCopyWithImpl<$Res, $Val extends VisibleEvent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = null,
+    Object? value = freezed,
   }) {
     return _then(_value.copyWith(
-      value: null == value
+      value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -100,7 +100,7 @@ abstract class _$$OnChangedImplCopyWith<$Res>
       __$$OnChangedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String value});
+  $Res call({String? value});
 }
 
 /// @nodoc
@@ -116,13 +116,13 @@ class __$$OnChangedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = null,
+    Object? value = freezed,
   }) {
     return _then(_$OnChangedImpl(
-      value: null == value
+      value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -133,7 +133,7 @@ class _$OnChangedImpl implements OnChanged {
   const _$OnChangedImpl({required this.value});
 
   @override
-  final String value;
+  final String? value;
 
   @override
   String toString() {
@@ -162,7 +162,7 @@ class _$OnChangedImpl implements OnChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String value) onChanged,
+    required TResult Function(String? value) onChanged,
   }) {
     return onChanged(value);
   }
@@ -170,7 +170,7 @@ class _$OnChangedImpl implements OnChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String value)? onChanged,
+    TResult? Function(String? value)? onChanged,
   }) {
     return onChanged?.call(value);
   }
@@ -178,7 +178,7 @@ class _$OnChangedImpl implements OnChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String value)? onChanged,
+    TResult Function(String? value)? onChanged,
     required TResult orElse(),
   }) {
     if (onChanged != null) {
@@ -217,10 +217,10 @@ class _$OnChangedImpl implements OnChanged {
 }
 
 abstract class OnChanged implements VisibleEvent {
-  const factory OnChanged({required final String value}) = _$OnChangedImpl;
+  const factory OnChanged({required final String? value}) = _$OnChangedImpl;
 
   @override
-  String get value;
+  String? get value;
 
   /// Create a copy of VisibleEvent
   /// with the given fields replaced by the non-null parameter values.
