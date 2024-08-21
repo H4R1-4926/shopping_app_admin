@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:shopping_app_admin/Application/Theme%20Bloc/theme_bloc_bloc.dart';
+import 'package:shopping_app_admin/Application/Widget%20Blocs/Visible%20Widget/visible_bloc.dart';
 import 'package:shopping_app_admin/Core/theme.dart';
 import 'package:shopping_app_admin/Presentation/Screens/Home/hompage.dart';
 
@@ -25,6 +26,9 @@ class MainApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => ThemeBlocBloc(),
+        ),
+        BlocProvider(
+          create: (context) => VisibleBloc(),
         ),
       ],
       child: BlocBuilder<ThemeBlocBloc, ThemeBlocState>(
