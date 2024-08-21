@@ -2,5 +2,5 @@ part of 'visible_bloc.dart';
 
 @freezed
 class VisibleEvent with _$VisibleEvent {
-  const factory VisibleEvent.started() = _Started;
+  const factory VisibleEvent.onChanged({required String value}) = OnChanged;
 }

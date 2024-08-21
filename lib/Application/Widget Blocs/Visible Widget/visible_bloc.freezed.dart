@@ -16,37 +16,44 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$VisibleEvent {
+  String get value => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(String value) onChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(String value)? onChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(String value)? onChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(OnChanged value) onChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(OnChanged value)? onChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(OnChanged value)? onChanged,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  /// Create a copy of VisibleEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $VisibleEventCopyWith<VisibleEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -55,6 +62,8 @@ abstract class $VisibleEventCopyWith<$Res> {
   factory $VisibleEventCopyWith(
           VisibleEvent value, $Res Function(VisibleEvent) then) =
       _$VisibleEventCopyWithImpl<$Res, VisibleEvent>;
+  @useResult
+  $Res call({String value});
 }
 
 /// @nodoc
@@ -69,70 +78,111 @@ class _$VisibleEventCopyWithImpl<$Res, $Val extends VisibleEvent>
 
   /// Create a copy of VisibleEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_value.copyWith(
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
+abstract class _$$OnChangedImplCopyWith<$Res>
+    implements $VisibleEventCopyWith<$Res> {
+  factory _$$OnChangedImplCopyWith(
+          _$OnChangedImpl value, $Res Function(_$OnChangedImpl) then) =
+      __$$OnChangedImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String value});
 }
 
 /// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$VisibleEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
+class __$$OnChangedImplCopyWithImpl<$Res>
+    extends _$VisibleEventCopyWithImpl<$Res, _$OnChangedImpl>
+    implements _$$OnChangedImplCopyWith<$Res> {
+  __$$OnChangedImplCopyWithImpl(
+      _$OnChangedImpl _value, $Res Function(_$OnChangedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of VisibleEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$OnChangedImpl(
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+class _$OnChangedImpl implements OnChanged {
+  const _$OnChangedImpl({required this.value});
+
+  @override
+  final String value;
 
   @override
   String toString() {
-    return 'VisibleEvent.started()';
+    return 'VisibleEvent.onChanged(value: $value)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$OnChangedImpl &&
+            (identical(other.value, value) || other.value == value));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, value);
+
+  /// Create a copy of VisibleEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnChangedImplCopyWith<_$OnChangedImpl> get copyWith =>
+      __$$OnChangedImplCopyWithImpl<_$OnChangedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(String value) onChanged,
   }) {
-    return started();
+    return onChanged(value);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(String value)? onChanged,
   }) {
-    return started?.call();
+    return onChanged?.call(value);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(String value)? onChanged,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (onChanged != null) {
+      return onChanged(value);
     }
     return orElse();
   }
@@ -140,69 +190,54 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(OnChanged value) onChanged,
   }) {
-    return started(this);
+    return onChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(OnChanged value)? onChanged,
   }) {
-    return started?.call(this);
+    return onChanged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(OnChanged value)? onChanged,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (onChanged != null) {
+      return onChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements VisibleEvent {
-  const factory _Started() = _$StartedImpl;
+abstract class OnChanged implements VisibleEvent {
+  const factory OnChanged({required final String value}) = _$OnChangedImpl;
+
+  @override
+  String get value;
+
+  /// Create a copy of VisibleEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OnChangedImplCopyWith<_$OnChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$VisibleState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) =>
+  bool get isVisible => throw _privateConstructorUsedError;
+
+  /// Create a copy of VisibleState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $VisibleStateCopyWith<VisibleState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -211,6 +246,8 @@ abstract class $VisibleStateCopyWith<$Res> {
   factory $VisibleStateCopyWith(
           VisibleState value, $Res Function(VisibleState) then) =
       _$VisibleStateCopyWithImpl<$Res, VisibleState>;
+  @useResult
+  $Res call({bool isVisible});
 }
 
 /// @nodoc
@@ -225,103 +262,100 @@ class _$VisibleStateCopyWithImpl<$Res, $Val extends VisibleState>
 
   /// Create a copy of VisibleState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isVisible = null,
+  }) {
+    return _then(_value.copyWith(
+      isVisible: null == isVisible
+          ? _value.isVisible
+          : isVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$VisibleStateImplCopyWith<$Res>
+    implements $VisibleStateCopyWith<$Res> {
+  factory _$$VisibleStateImplCopyWith(
+          _$VisibleStateImpl value, $Res Function(_$VisibleStateImpl) then) =
+      __$$VisibleStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool isVisible});
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$VisibleStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$VisibleStateImplCopyWithImpl<$Res>
+    extends _$VisibleStateCopyWithImpl<$Res, _$VisibleStateImpl>
+    implements _$$VisibleStateImplCopyWith<$Res> {
+  __$$VisibleStateImplCopyWithImpl(
+      _$VisibleStateImpl _value, $Res Function(_$VisibleStateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of VisibleState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isVisible = null,
+  }) {
+    return _then(_$VisibleStateImpl(
+      isVisible: null == isVisible
+          ? _value.isVisible
+          : isVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$VisibleStateImpl implements _VisibleState {
+  const _$VisibleStateImpl({required this.isVisible});
+
+  @override
+  final bool isVisible;
 
   @override
   String toString() {
-    return 'VisibleState.initial()';
+    return 'VisibleState(isVisible: $isVisible)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$VisibleStateImpl &&
+            (identical(other.isVisible, isVisible) ||
+                other.isVisible == isVisible));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isVisible);
 
+  /// Create a copy of VisibleState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$VisibleStateImplCopyWith<_$VisibleStateImpl> get copyWith =>
+      __$$VisibleStateImplCopyWithImpl<_$VisibleStateImpl>(this, _$identity);
 }
 
-abstract class _Initial implements VisibleState {
-  const factory _Initial() = _$InitialImpl;
+abstract class _VisibleState implements VisibleState {
+  const factory _VisibleState({required final bool isVisible}) =
+      _$VisibleStateImpl;
+
+  @override
+  bool get isVisible;
+
+  /// Create a copy of VisibleState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$VisibleStateImplCopyWith<_$VisibleStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
