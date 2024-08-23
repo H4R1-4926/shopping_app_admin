@@ -201,7 +201,7 @@ class ItemAddPage extends StatelessWidget {
                 ]),
               ),
               Visibility(
-                // visible: state.isTrue,
+                visible: state.isTrue,
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                   Padding(
