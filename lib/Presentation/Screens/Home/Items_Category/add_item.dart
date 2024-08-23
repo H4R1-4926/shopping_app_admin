@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:shopping_app_admin/Application/Widget%20Blocs/Visible%20Widget/visible_bloc.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
 
@@ -116,6 +117,44 @@ class ItemAddPage extends StatelessWidget {
                       fillColor: klightGrey),
                 ),
               ),
+              Row(children: [
+                Flexible(
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        left: 20, right: 10, top: 10, bottom: 10),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          hintText: 'Kg/Lbs',
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(21),
+                              borderSide: const BorderSide(color: klightGrey)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(21),
+                              borderSide: const BorderSide(color: klightGrey)),
+                          filled: true,
+                          fillColor: klightGrey),
+                    ),
+                  ),
+                ),
+                Flexible(
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        left: 20, right: 10, top: 10, bottom: 10),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          hintText: 'Price',
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(21),
+                              borderSide: const BorderSide(color: klightGrey)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(21),
+                              borderSide: const BorderSide(color: klightGrey)),
+                          filled: true,
+                          fillColor: klightGrey),
+                    ),
+                  ),
+                ),
+              ]),
               Visibility(
                 visible: state.isTrue,
                 child: Row(children: [
@@ -125,7 +164,7 @@ class ItemAddPage extends StatelessWidget {
                           left: 20, right: 10, top: 10, bottom: 10),
                       child: TextField(
                         decoration: InputDecoration(
-                            hintText: 'Kg/Lbs',
+                            hintText: 'Size',
                             enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(21),
                                 borderSide:
@@ -145,7 +184,7 @@ class ItemAddPage extends StatelessWidget {
                           left: 20, right: 10, top: 10, bottom: 10),
                       child: TextField(
                         decoration: InputDecoration(
-                            hintText: 'Price',
+                            hintText: 'Material',
                             enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(21),
                                 borderSide:
@@ -161,44 +200,47 @@ class ItemAddPage extends StatelessWidget {
                   ),
                 ]),
               ),
-              Row(children: [
-                Flexible(
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        left: 20, right: 10, top: 10, bottom: 10),
-                    child: TextField(
-                      decoration: InputDecoration(
-                          hintText: 'Size',
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(21),
-                              borderSide: const BorderSide(color: klightGrey)),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(21),
-                              borderSide: const BorderSide(color: klightGrey)),
-                          filled: true,
-                          fillColor: klightGrey),
+              Visibility(
+                // visible: state.isTrue,
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                  Padding(
+                      padding: const EdgeInsets.only(
+                          left: 20, right: 10, top: 10, bottom: 10),
+                      child: CircleAvatar(
+                        radius: 35,
+                        backgroundColor: klightGrey,
+                        child: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Iconsax.add,
+                              size: 40,
+                            )),
+                      )),
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 20, right: 10, top: 10, bottom: 10),
+                      child: LimitedBox(
+                          maxHeight: 80,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            shrinkWrap: true,
+                            itemCount: 10,
+                            itemBuilder: (context, index) {
+                              return const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 5),
+                                child: CircleAvatar(
+                                  radius: 35,
+                                  backgroundColor: klightGrey,
+                                ),
+                              );
+                            },
+                          )),
                     ),
                   ),
-                ),
-                Flexible(
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        left: 20, right: 10, top: 10, bottom: 10),
-                    child: TextField(
-                      decoration: InputDecoration(
-                          hintText: 'Colors',
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(21),
-                              borderSide: const BorderSide(color: klightGrey)),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(21),
-                              borderSide: const BorderSide(color: klightGrey)),
-                          filled: true,
-                          fillColor: klightGrey),
-                    ),
-                  ),
-                ),
-              ])
+                ]),
+              ),
             ],
           ),
         );
