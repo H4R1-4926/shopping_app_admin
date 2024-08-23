@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shopping_app_admin/Application/Widget%20Blocs/Visible%20Widget/visible_bloc.dart';
@@ -211,7 +212,27 @@ class ItemAddPage extends StatelessWidget {
                         radius: 35,
                         backgroundColor: klightGrey,
                         child: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) => Column(
+                                  children: [
+                                    AlertDialog(
+                                      title: const Text('Pick color'),
+                                      content: ColorPicker(
+                                        pickerColor: Colors.black,
+                                        onColorChanged: (value) {},
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () {},
+                                            child: const Text('Select'))
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
                             icon: const Icon(
                               Iconsax.add,
                               size: 40,
@@ -232,7 +253,7 @@ class ItemAddPage extends StatelessWidget {
                                 padding: EdgeInsets.symmetric(horizontal: 5),
                                 child: CircleAvatar(
                                   radius: 35,
-                                  backgroundColor: klightGrey,
+                                  backgroundColor: Colors.blueAccent,
                                 ),
                               );
                             },
