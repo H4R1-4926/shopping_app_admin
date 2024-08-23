@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
-import 'package:shopping_app_admin/Application/Theme%20Bloc/theme_bloc_bloc.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
 import 'package:shopping_app_admin/Core/size.dart';
 import 'package:shopping_app_admin/Presentation/Login/login.dart';
 
 import 'package:shopping_app_admin/Presentation/Screens/Account/Profile%20Screens/notification_settings.dart';
-
-import 'package:shopping_app_admin/Presentation/Screens/Account/Profile%20Screens/theme_settings.dart';
 
 import 'widgets/listtile_widget.dart';
 
@@ -107,33 +103,6 @@ class AccountPage extends StatelessWidget {
                 ));
               },
               trailIcon: true,
-            ),
-            BlocBuilder<ThemeBlocBloc, ThemeBlocState>(
-              builder: (context, state) {
-                return ListTileWidget(
-                  prefixIcon: Iconsax.eye,
-                  titleText: 'Theme',
-                  secondText: ' ',
-                  ontap: () {
-                    Navigator.of(context).push(PageRouteBuilder(
-                      pageBuilder: (context, animation, secondaryAnimation) =>
-                          const ThemeSettings(),
-                      transitionsBuilder:
-                          (context, animation, secondaryAnimation, child) {
-                        var tween = Tween(
-                          begin: const Offset(1.0, 0.0),
-                          end: Offset.zero,
-                        ).chain(CurveTween(curve: Curves.easeIn));
-                        return SlideTransition(
-                          position: animation.drive(tween),
-                          child: child,
-                        );
-                      },
-                    ));
-                  },
-                  trailIcon: true,
-                );
-              },
             ),
             ListTileWidget(
               prefixIcon: Iconsax.logout,
