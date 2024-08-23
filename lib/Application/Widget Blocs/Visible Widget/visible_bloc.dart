@@ -9,7 +9,11 @@ part 'visible_bloc.freezed.dart';
 class VisibleBloc extends Bloc<VisibleEvent, VisibleState> {
   VisibleBloc() : super(VisibleState.initial()) {
     on<OnChanged>((event, emit) {
-      emit(VisibleState(isVisible: state.isVisible));
+      if (event.category == 'Protiens') {
+        emit(const VisibleState(isTrue: true));
+      } else {
+        emit(const VisibleState(isTrue: false));
+      }
     });
   }
 }

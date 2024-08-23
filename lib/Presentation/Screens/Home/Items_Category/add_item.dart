@@ -9,20 +9,19 @@ class ItemAddPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController categoryController =
+        TextEditingController(text: 'Select Category');
     final List<String> category = [
       'Protiens',
       'Creatin',
       'Equipments',
       'Cloths'
     ];
-    final TextEditingController categoryController =
-        TextEditingController(text: 'Select Category');
-    String? value;
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) {
-        return context.read<VisibleBloc>().add(OnChanged(value: value));
-      },
-    );
+    // WidgetsBinding.instance.addPostFrameCallback(
+    //   (_) {
+    //     return
+    //   },
+    // );
     return BlocBuilder<VisibleBloc, VisibleState>(
       builder: (context, state) {
         return Scaffold(
@@ -103,12 +102,14 @@ class ItemAddPage extends StatelessWidget {
                                   .toList(),
                               onChanged: (value) {
                                 categoryController.text = value.toString();
-                                if (categoryController.text == 'Protiens') {
-                                  state.isVisible == true;
-                                }
+                                context.read<VisibleBloc>().add(OnChanged(
+                                    category: categoryController.text));
                               },
                             ),
                       enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(21),
+                          borderSide: const BorderSide(color: klightGrey)),
+                      focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(21),
                           borderSide: const BorderSide(color: klightGrey)),
                       filled: true,
@@ -116,7 +117,7 @@ class ItemAddPage extends StatelessWidget {
                 ),
               ),
               Visibility(
-                visible: state.isVisible,
+                visible: state.isTrue,
                 child: Row(children: [
                   Flexible(
                     child: Padding(
@@ -124,7 +125,7 @@ class ItemAddPage extends StatelessWidget {
                           left: 20, right: 10, top: 10, bottom: 10),
                       child: TextField(
                         decoration: InputDecoration(
-                            hintText: 'Kg/Lbs/size',
+                            hintText: 'Kg/Lbs',
                             enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(21),
                                 borderSide:
@@ -167,7 +168,7 @@ class ItemAddPage extends StatelessWidget {
                         left: 20, right: 10, top: 10, bottom: 10),
                     child: TextField(
                       decoration: InputDecoration(
-                          hintText: 'Color',
+                          hintText: 'Size',
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(21),
                               borderSide: const BorderSide(color: klightGrey)),
@@ -185,7 +186,7 @@ class ItemAddPage extends StatelessWidget {
                         left: 20, right: 10, top: 10, bottom: 10),
                     child: TextField(
                       decoration: InputDecoration(
-                          hintText: 'Price',
+                          hintText: 'Colors',
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(21),
                               borderSide: const BorderSide(color: klightGrey)),

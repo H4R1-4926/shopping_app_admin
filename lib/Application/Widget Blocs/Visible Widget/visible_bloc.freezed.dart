@@ -16,20 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$VisibleEvent {
-  String? get value => throw _privateConstructorUsedError;
+  String get category => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? value) onChanged,
+    required TResult Function(String category) onChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? value)? onChanged,
+    TResult? Function(String category)? onChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? value)? onChanged,
+    TResult Function(String category)? onChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,7 +63,7 @@ abstract class $VisibleEventCopyWith<$Res> {
           VisibleEvent value, $Res Function(VisibleEvent) then) =
       _$VisibleEventCopyWithImpl<$Res, VisibleEvent>;
   @useResult
-  $Res call({String? value});
+  $Res call({String category});
 }
 
 /// @nodoc
@@ -81,13 +81,13 @@ class _$VisibleEventCopyWithImpl<$Res, $Val extends VisibleEvent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = freezed,
+    Object? category = null,
   }) {
     return _then(_value.copyWith(
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String?,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -100,7 +100,7 @@ abstract class _$$OnChangedImplCopyWith<$Res>
       __$$OnChangedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? value});
+  $Res call({String category});
 }
 
 /// @nodoc
@@ -116,13 +116,13 @@ class __$$OnChangedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = freezed,
+    Object? category = null,
   }) {
     return _then(_$OnChangedImpl(
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String?,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -130,14 +130,14 @@ class __$$OnChangedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$OnChangedImpl implements OnChanged {
-  const _$OnChangedImpl({required this.value});
+  const _$OnChangedImpl({required this.category});
 
   @override
-  final String? value;
+  final String category;
 
   @override
   String toString() {
-    return 'VisibleEvent.onChanged(value: $value)';
+    return 'VisibleEvent.onChanged(category: $category)';
   }
 
   @override
@@ -145,11 +145,12 @@ class _$OnChangedImpl implements OnChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OnChangedImpl &&
-            (identical(other.value, value) || other.value == value));
+            (identical(other.category, category) ||
+                other.category == category));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, value);
+  int get hashCode => Object.hash(runtimeType, category);
 
   /// Create a copy of VisibleEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -162,27 +163,27 @@ class _$OnChangedImpl implements OnChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? value) onChanged,
+    required TResult Function(String category) onChanged,
   }) {
-    return onChanged(value);
+    return onChanged(category);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? value)? onChanged,
+    TResult? Function(String category)? onChanged,
   }) {
-    return onChanged?.call(value);
+    return onChanged?.call(category);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? value)? onChanged,
+    TResult Function(String category)? onChanged,
     required TResult orElse(),
   }) {
     if (onChanged != null) {
-      return onChanged(value);
+      return onChanged(category);
     }
     return orElse();
   }
@@ -217,10 +218,10 @@ class _$OnChangedImpl implements OnChanged {
 }
 
 abstract class OnChanged implements VisibleEvent {
-  const factory OnChanged({required final String? value}) = _$OnChangedImpl;
+  const factory OnChanged({required final String category}) = _$OnChangedImpl;
 
   @override
-  String? get value;
+  String get category;
 
   /// Create a copy of VisibleEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -232,7 +233,7 @@ abstract class OnChanged implements VisibleEvent {
 
 /// @nodoc
 mixin _$VisibleState {
-  bool get isVisible => throw _privateConstructorUsedError;
+  bool get isTrue => throw _privateConstructorUsedError;
 
   /// Create a copy of VisibleState
   /// with the given fields replaced by the non-null parameter values.
@@ -247,7 +248,7 @@ abstract class $VisibleStateCopyWith<$Res> {
           VisibleState value, $Res Function(VisibleState) then) =
       _$VisibleStateCopyWithImpl<$Res, VisibleState>;
   @useResult
-  $Res call({bool isVisible});
+  $Res call({bool isTrue});
 }
 
 /// @nodoc
@@ -265,12 +266,12 @@ class _$VisibleStateCopyWithImpl<$Res, $Val extends VisibleState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isVisible = null,
+    Object? isTrue = null,
   }) {
     return _then(_value.copyWith(
-      isVisible: null == isVisible
-          ? _value.isVisible
-          : isVisible // ignore: cast_nullable_to_non_nullable
+      isTrue: null == isTrue
+          ? _value.isTrue
+          : isTrue // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -284,7 +285,7 @@ abstract class _$$VisibleStateImplCopyWith<$Res>
       __$$VisibleStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isVisible});
+  $Res call({bool isTrue});
 }
 
 /// @nodoc
@@ -300,12 +301,12 @@ class __$$VisibleStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isVisible = null,
+    Object? isTrue = null,
   }) {
     return _then(_$VisibleStateImpl(
-      isVisible: null == isVisible
-          ? _value.isVisible
-          : isVisible // ignore: cast_nullable_to_non_nullable
+      isTrue: null == isTrue
+          ? _value.isTrue
+          : isTrue // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -314,14 +315,14 @@ class __$$VisibleStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$VisibleStateImpl implements _VisibleState {
-  const _$VisibleStateImpl({required this.isVisible});
+  const _$VisibleStateImpl({required this.isTrue});
 
   @override
-  final bool isVisible;
+  final bool isTrue;
 
   @override
   String toString() {
-    return 'VisibleState(isVisible: $isVisible)';
+    return 'VisibleState(isTrue: $isTrue)';
   }
 
   @override
@@ -329,12 +330,11 @@ class _$VisibleStateImpl implements _VisibleState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VisibleStateImpl &&
-            (identical(other.isVisible, isVisible) ||
-                other.isVisible == isVisible));
+            (identical(other.isTrue, isTrue) || other.isTrue == isTrue));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isVisible);
+  int get hashCode => Object.hash(runtimeType, isTrue);
 
   /// Create a copy of VisibleState
   /// with the given fields replaced by the non-null parameter values.
@@ -346,11 +346,11 @@ class _$VisibleStateImpl implements _VisibleState {
 }
 
 abstract class _VisibleState implements VisibleState {
-  const factory _VisibleState({required final bool isVisible}) =
+  const factory _VisibleState({required final bool isTrue}) =
       _$VisibleStateImpl;
 
   @override
-  bool get isVisible;
+  bool get isTrue;
 
   /// Create a copy of VisibleState
   /// with the given fields replaced by the non-null parameter values.
