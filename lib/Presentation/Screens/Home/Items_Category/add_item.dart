@@ -256,7 +256,8 @@ class ItemAddPage extends StatelessWidget {
                             builder: (context, state) {
                               if (state.colors.isEmpty) {
                                 return const Center(
-                                    child: Text('<-   Choose Color'));
+                                    child: Text('<-   Choose Color',
+                                        style: TextStyle(fontSize: 20)));
                               }
                               return ListView.builder(
                                 scrollDirection: Axis.horizontal,
