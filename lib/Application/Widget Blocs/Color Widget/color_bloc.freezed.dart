@@ -16,37 +16,44 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ColorEvent {
+  Color get colors => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(Color colors) add,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(Color colors)? add,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(Color colors)? add,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(Add value) add,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(Add value)? add,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(Add value)? add,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  /// Create a copy of ColorEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ColorEventCopyWith<ColorEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -55,6 +62,8 @@ abstract class $ColorEventCopyWith<$Res> {
   factory $ColorEventCopyWith(
           ColorEvent value, $Res Function(ColorEvent) then) =
       _$ColorEventCopyWithImpl<$Res, ColorEvent>;
+  @useResult
+  $Res call({Color colors});
 }
 
 /// @nodoc
@@ -69,70 +78,108 @@ class _$ColorEventCopyWithImpl<$Res, $Val extends ColorEvent>
 
   /// Create a copy of ColorEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? colors = null,
+  }) {
+    return _then(_value.copyWith(
+      colors: null == colors
+          ? _value.colors
+          : colors // ignore: cast_nullable_to_non_nullable
+              as Color,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
+abstract class _$$AddImplCopyWith<$Res> implements $ColorEventCopyWith<$Res> {
+  factory _$$AddImplCopyWith(_$AddImpl value, $Res Function(_$AddImpl) then) =
+      __$$AddImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Color colors});
 }
 
 /// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$ColorEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
+class __$$AddImplCopyWithImpl<$Res>
+    extends _$ColorEventCopyWithImpl<$Res, _$AddImpl>
+    implements _$$AddImplCopyWith<$Res> {
+  __$$AddImplCopyWithImpl(_$AddImpl _value, $Res Function(_$AddImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ColorEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? colors = null,
+  }) {
+    return _then(_$AddImpl(
+      null == colors
+          ? _value.colors
+          : colors // ignore: cast_nullable_to_non_nullable
+              as Color,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+class _$AddImpl implements Add {
+  const _$AddImpl(this.colors);
+
+  @override
+  final Color colors;
 
   @override
   String toString() {
-    return 'ColorEvent.started()';
+    return 'ColorEvent.add(colors: $colors)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$AddImpl &&
+            (identical(other.colors, colors) || other.colors == colors));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, colors);
+
+  /// Create a copy of ColorEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddImplCopyWith<_$AddImpl> get copyWith =>
+      __$$AddImplCopyWithImpl<_$AddImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(Color colors) add,
   }) {
-    return started();
+    return add(colors);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(Color colors)? add,
   }) {
-    return started?.call();
+    return add?.call(colors);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(Color colors)? add,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (add != null) {
+      return add(colors);
     }
     return orElse();
   }
@@ -140,69 +187,54 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(Add value) add,
   }) {
-    return started(this);
+    return add(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(Add value)? add,
   }) {
-    return started?.call(this);
+    return add?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(Add value)? add,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (add != null) {
+      return add(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements ColorEvent {
-  const factory _Started() = _$StartedImpl;
+abstract class Add implements ColorEvent {
+  const factory Add(final Color colors) = _$AddImpl;
+
+  @override
+  Color get colors;
+
+  /// Create a copy of ColorEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AddImplCopyWith<_$AddImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$ColorState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) =>
+  List<Color> get colors => throw _privateConstructorUsedError;
+
+  /// Create a copy of ColorState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ColorStateCopyWith<ColorState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -211,6 +243,8 @@ abstract class $ColorStateCopyWith<$Res> {
   factory $ColorStateCopyWith(
           ColorState value, $Res Function(ColorState) then) =
       _$ColorStateCopyWithImpl<$Res, ColorState>;
+  @useResult
+  $Res call({List<Color> colors});
 }
 
 /// @nodoc
@@ -225,103 +259,106 @@ class _$ColorStateCopyWithImpl<$Res, $Val extends ColorState>
 
   /// Create a copy of ColorState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? colors = null,
+  }) {
+    return _then(_value.copyWith(
+      colors: null == colors
+          ? _value.colors
+          : colors // ignore: cast_nullable_to_non_nullable
+              as List<Color>,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$ColorStateImplCopyWith<$Res>
+    implements $ColorStateCopyWith<$Res> {
+  factory _$$ColorStateImplCopyWith(
+          _$ColorStateImpl value, $Res Function(_$ColorStateImpl) then) =
+      __$$ColorStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<Color> colors});
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$ColorStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$ColorStateImplCopyWithImpl<$Res>
+    extends _$ColorStateCopyWithImpl<$Res, _$ColorStateImpl>
+    implements _$$ColorStateImplCopyWith<$Res> {
+  __$$ColorStateImplCopyWithImpl(
+      _$ColorStateImpl _value, $Res Function(_$ColorStateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ColorState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? colors = null,
+  }) {
+    return _then(_$ColorStateImpl(
+      colors: null == colors
+          ? _value._colors
+          : colors // ignore: cast_nullable_to_non_nullable
+              as List<Color>,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$ColorStateImpl implements _ColorState {
+  const _$ColorStateImpl({required final List<Color> colors})
+      : _colors = colors;
+
+  final List<Color> _colors;
+  @override
+  List<Color> get colors {
+    if (_colors is EqualUnmodifiableListView) return _colors;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_colors);
+  }
 
   @override
   String toString() {
-    return 'ColorState.initial()';
+    return 'ColorState(colors: $colors)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ColorStateImpl &&
+            const DeepCollectionEquality().equals(other._colors, _colors));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_colors));
 
+  /// Create a copy of ColorState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$ColorStateImplCopyWith<_$ColorStateImpl> get copyWith =>
+      __$$ColorStateImplCopyWithImpl<_$ColorStateImpl>(this, _$identity);
 }
 
-abstract class _Initial implements ColorState {
-  const factory _Initial() = _$InitialImpl;
+abstract class _ColorState implements ColorState {
+  const factory _ColorState({required final List<Color> colors}) =
+      _$ColorStateImpl;
+
+  @override
+  List<Color> get colors;
+
+  /// Create a copy of ColorState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ColorStateImplCopyWith<_$ColorStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
