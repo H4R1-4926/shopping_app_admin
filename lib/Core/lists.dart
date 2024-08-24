@@ -3,3 +3,5 @@ final List<String> kcarousalList = [
   'assets/img/items.jpg',
   'assets/img/orders.jpg',
 ];
+
+final List kDemoColorList = [];
