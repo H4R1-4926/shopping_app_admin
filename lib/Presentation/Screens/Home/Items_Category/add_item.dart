@@ -20,11 +20,7 @@ class ItemAddPage extends StatelessWidget {
       'Equipments',
       'Cloths'
     ];
-    // WidgetsBinding.instance.addPostFrameCallback(
-    //   (_) {
-    //     return
-    //   },
-    // );
+
     return BlocBuilder<VisibleBloc, VisibleState>(
       builder: (context, state) {
         return Scaffold(
@@ -204,90 +200,84 @@ class ItemAddPage extends StatelessWidget {
               ),
               Visibility(
                 visible: state.isTrue,
-                child: BlocBuilder<ColorBloc, ColorState>(
-                  builder: (context, state) {
-                    return Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 20, right: 10, top: 10, bottom: 10),
-                              child: CircleAvatar(
-                                radius: 35,
-                                backgroundColor: klightGrey,
-                                child: IconButton(
-                                    onPressed: () {
-                                      showDialog(
-                                          context: context,
-                                          builder: (context) {
-                                            Color? color;
-                                            return Column(
-                                              children: [
-                                                AlertDialog(
-                                                  title:
-                                                      const Text('Pick color'),
-                                                  content: ColorPicker(
-                                                    pickerColor:
-                                                        const Color.fromARGB(
-                                                            255, 78, 114, 0),
-                                                    onColorChanged: (value) {
-                                                      color = value;
-                                                    },
-                                                  ),
-                                                  actions: [
-                                                    TextButton(
-                                                        onPressed: () {
-                                                          context
-                                                              .read<ColorBloc>()
-                                                              .add(Add(color!));
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                  Padding(
+                      padding: const EdgeInsets.only(
+                          left: 20, right: 10, top: 10, bottom: 10),
+                      child: CircleAvatar(
+                        radius: 35,
+                        backgroundColor: klightGrey,
+                        child: IconButton(
+                            onPressed: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    Color? color;
+                                    return Column(
+                                      children: [
+                                        AlertDialog(
+                                          title: const Text('Pick color'),
+                                          content: ColorPicker(
+                                            pickerColor: const Color.fromARGB(
+                                                255, 78, 114, 0),
+                                            onColorChanged: (value) {
+                                              color = value;
+                                            },
+                                          ),
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  context
+                                                      .read<ColorBloc>()
+                                                      .add(Add(color!));
 
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        child: const Text(
-                                                            'Select'))
-                                                  ],
-                                                ),
-                                              ],
-                                            );
-                                          });
-                                    },
-                                    icon: const Icon(
-                                      Iconsax.add,
-                                      size: 40,
-                                    )),
-                              )),
-                          Flexible(
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 20, right: 10, top: 10, bottom: 10),
-                              child: LimitedBox(
-                                  maxHeight: 80,
-                                  child: state.colors.isEmpty
-                                      ? const Center(
-                                          child: Text('<-   Choose Color'))
-                                      : ListView.builder(
-                                          scrollDirection: Axis.horizontal,
-                                          shrinkWrap: true,
-                                          itemCount: state.colors.length,
-                                          itemBuilder: (context, index) {
-                                            return Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 5),
-                                              child: CircleAvatar(
-                                                radius: 35,
-                                                backgroundColor:
-                                                    state.colors[index],
-                                              ),
-                                            );
-                                          },
-                                        )),
-                            ),
-                          ),
-                        ]);
-                  },
-                ),
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text('Select'))
+                                          ],
+                                        ),
+                                      ],
+                                    );
+                                  });
+                            },
+                            icon: const Icon(
+                              Iconsax.add,
+                              size: 40,
+                            )),
+                      )),
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 20, right: 10, top: 10, bottom: 10),
+                      child: LimitedBox(
+                          maxHeight: 80,
+                          child: BlocBuilder<ColorBloc, ColorState>(
+                            builder: (context, state) {
+                              if (state.colors.isEmpty) {
+                                return const Center(
+                                    child: Text('<-   Choose Color'));
+                              }
+                              return ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                shrinkWrap: true,
+                                itemCount: state.colors.length,
+                                itemBuilder: (context, index) {
+                                  return Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 5),
+                                    child: CircleAvatar(
+                                      radius: 35,
+                                      backgroundColor: state.colors[index],
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          )),
+                    ),
+                  ),
+                ]),
               ),
             ],
           ),
