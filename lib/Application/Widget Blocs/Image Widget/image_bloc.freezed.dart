@@ -16,37 +16,44 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ImageEvent {
+  List<XFile>? get pickedImage => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(List<XFile>? pickedImage) pick,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(List<XFile>? pickedImage)? pick,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(List<XFile>? pickedImage)? pick,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(Pick value) pick,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(Pick value)? pick,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(Pick value)? pick,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  /// Create a copy of ImageEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ImageEventCopyWith<ImageEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -55,6 +62,8 @@ abstract class $ImageEventCopyWith<$Res> {
   factory $ImageEventCopyWith(
           ImageEvent value, $Res Function(ImageEvent) then) =
       _$ImageEventCopyWithImpl<$Res, ImageEvent>;
+  @useResult
+  $Res call({List<XFile>? pickedImage});
 }
 
 /// @nodoc
@@ -69,70 +78,119 @@ class _$ImageEventCopyWithImpl<$Res, $Val extends ImageEvent>
 
   /// Create a copy of ImageEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pickedImage = freezed,
+  }) {
+    return _then(_value.copyWith(
+      pickedImage: freezed == pickedImage
+          ? _value.pickedImage
+          : pickedImage // ignore: cast_nullable_to_non_nullable
+              as List<XFile>?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
+abstract class _$$PickImplCopyWith<$Res> implements $ImageEventCopyWith<$Res> {
+  factory _$$PickImplCopyWith(
+          _$PickImpl value, $Res Function(_$PickImpl) then) =
+      __$$PickImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<XFile>? pickedImage});
 }
 
 /// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$ImageEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
+class __$$PickImplCopyWithImpl<$Res>
+    extends _$ImageEventCopyWithImpl<$Res, _$PickImpl>
+    implements _$$PickImplCopyWith<$Res> {
+  __$$PickImplCopyWithImpl(_$PickImpl _value, $Res Function(_$PickImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ImageEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pickedImage = freezed,
+  }) {
+    return _then(_$PickImpl(
+      pickedImage: freezed == pickedImage
+          ? _value._pickedImage
+          : pickedImage // ignore: cast_nullable_to_non_nullable
+              as List<XFile>?,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+class _$PickImpl implements Pick {
+  const _$PickImpl({required final List<XFile>? pickedImage})
+      : _pickedImage = pickedImage;
+
+  final List<XFile>? _pickedImage;
+  @override
+  List<XFile>? get pickedImage {
+    final value = _pickedImage;
+    if (value == null) return null;
+    if (_pickedImage is EqualUnmodifiableListView) return _pickedImage;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'ImageEvent.started()';
+    return 'ImageEvent.pick(pickedImage: $pickedImage)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$PickImpl &&
+            const DeepCollectionEquality()
+                .equals(other._pickedImage, _pickedImage));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_pickedImage));
+
+  /// Create a copy of ImageEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PickImplCopyWith<_$PickImpl> get copyWith =>
+      __$$PickImplCopyWithImpl<_$PickImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(List<XFile>? pickedImage) pick,
   }) {
-    return started();
+    return pick(pickedImage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(List<XFile>? pickedImage)? pick,
   }) {
-    return started?.call();
+    return pick?.call(pickedImage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(List<XFile>? pickedImage)? pick,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (pick != null) {
+      return pick(pickedImage);
     }
     return orElse();
   }
@@ -140,69 +198,54 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(Pick value) pick,
   }) {
-    return started(this);
+    return pick(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(Pick value)? pick,
   }) {
-    return started?.call(this);
+    return pick?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(Pick value)? pick,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (pick != null) {
+      return pick(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements ImageEvent {
-  const factory _Started() = _$StartedImpl;
+abstract class Pick implements ImageEvent {
+  const factory Pick({required final List<XFile>? pickedImage}) = _$PickImpl;
+
+  @override
+  List<XFile>? get pickedImage;
+
+  /// Create a copy of ImageEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PickImplCopyWith<_$PickImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$ImageState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) =>
+  List<XFile>? get mediaFileList => throw _privateConstructorUsedError;
+
+  /// Create a copy of ImageState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ImageStateCopyWith<ImageState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -211,6 +254,8 @@ abstract class $ImageStateCopyWith<$Res> {
   factory $ImageStateCopyWith(
           ImageState value, $Res Function(ImageState) then) =
       _$ImageStateCopyWithImpl<$Res, ImageState>;
+  @useResult
+  $Res call({List<XFile>? mediaFileList});
 }
 
 /// @nodoc
@@ -225,103 +270,109 @@ class _$ImageStateCopyWithImpl<$Res, $Val extends ImageState>
 
   /// Create a copy of ImageState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? mediaFileList = freezed,
+  }) {
+    return _then(_value.copyWith(
+      mediaFileList: freezed == mediaFileList
+          ? _value.mediaFileList
+          : mediaFileList // ignore: cast_nullable_to_non_nullable
+              as List<XFile>?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$ImageStateImplCopyWith<$Res>
+    implements $ImageStateCopyWith<$Res> {
+  factory _$$ImageStateImplCopyWith(
+          _$ImageStateImpl value, $Res Function(_$ImageStateImpl) then) =
+      __$$ImageStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<XFile>? mediaFileList});
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$ImageStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$ImageStateImplCopyWithImpl<$Res>
+    extends _$ImageStateCopyWithImpl<$Res, _$ImageStateImpl>
+    implements _$$ImageStateImplCopyWith<$Res> {
+  __$$ImageStateImplCopyWithImpl(
+      _$ImageStateImpl _value, $Res Function(_$ImageStateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ImageState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? mediaFileList = freezed,
+  }) {
+    return _then(_$ImageStateImpl(
+      mediaFileList: freezed == mediaFileList
+          ? _value._mediaFileList
+          : mediaFileList // ignore: cast_nullable_to_non_nullable
+              as List<XFile>?,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$ImageStateImpl implements _ImageState {
+  const _$ImageStateImpl({required final List<XFile>? mediaFileList})
+      : _mediaFileList = mediaFileList;
+
+  final List<XFile>? _mediaFileList;
+  @override
+  List<XFile>? get mediaFileList {
+    final value = _mediaFileList;
+    if (value == null) return null;
+    if (_mediaFileList is EqualUnmodifiableListView) return _mediaFileList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'ImageState.initial()';
+    return 'ImageState(mediaFileList: $mediaFileList)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ImageStateImpl &&
+            const DeepCollectionEquality()
+                .equals(other._mediaFileList, _mediaFileList));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_mediaFileList));
 
+  /// Create a copy of ImageState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$ImageStateImplCopyWith<_$ImageStateImpl> get copyWith =>
+      __$$ImageStateImplCopyWithImpl<_$ImageStateImpl>(this, _$identity);
 }
 
-abstract class _Initial implements ImageState {
-  const factory _Initial() = _$InitialImpl;
+abstract class _ImageState implements ImageState {
+  const factory _ImageState({required final List<XFile>? mediaFileList}) =
+      _$ImageStateImpl;
+
+  @override
+  List<XFile>? get mediaFileList;
+
+  /// Create a copy of ImageState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ImageStateImplCopyWith<_$ImageStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
