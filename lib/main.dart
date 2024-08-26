@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopping_app_admin/Application/Widget%20Blocs/Color%20Widget/color_bloc.dart';
+import 'package:shopping_app_admin/Application/Widget%20Blocs/Image%20Widget/image_bloc.dart';
 import 'package:shopping_app_admin/Application/Widget%20Blocs/Visible%20Widget/visible_bloc.dart';
 import 'package:shopping_app_admin/Presentation/Screens/Home/hompage.dart';
 
@@ -22,6 +23,9 @@ class MainApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => ColorBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ImageBloc(),
         ),
       ],
       child: const MaterialApp(
