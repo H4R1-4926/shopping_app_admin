@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shopping_app_admin/Application/Widget%20Blocs/Color%20Widget/color_bloc.dart';
+import 'package:shopping_app_admin/Application/Widget%20Blocs/Image%20Widget/image_bloc.dart';
 import 'package:shopping_app_admin/Application/Widget%20Blocs/Visible%20Widget/visible_bloc.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
 
@@ -12,6 +14,7 @@ class ItemAddPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _picker = ImagePicker();
     final TextEditingController categoryController =
         TextEditingController(text: 'Select Category');
     final List<String> category = [
@@ -280,88 +283,99 @@ class ItemAddPage extends StatelessWidget {
                   ),
                 ]),
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                Padding(
-                    padding: const EdgeInsets.only(
-                        left: 20, right: 10, top: 10, bottom: 10),
-                    child: CircleAvatar(
-                      radius: 35,
-                      backgroundColor: klightGrey,
-                      child: IconButton(
-                          onPressed: () {
-                            // showDialog(
-                            //     context: context,
-                            //     builder: (context) {
-                            //       Color? color;
-                            //       return Column(
-                            //         children: [
-                            //           AlertDialog(
-                            //             title: const Text('Pick color'),
-                            //             content: ColorPicker(
-                            //               pickerColor: const Color.fromARGB(
-                            //                   255, 78, 114, 0),
-                            //               onColorChanged: (value) {
-                            //                 color = value;
-                            //               },
-                            //             ),
-                            //             actions: [
-                            //               TextButton(
-                            //                   onPressed: () {
-                            //                     context
-                            //                         .read<ColorBloc>()
-                            //                         .add(Add(color!));
+              BlocBuilder<ImageBloc, ImageState>(
+                builder: (context, state) {
+                  return Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                            padding: const EdgeInsets.only(
+                                left: 20, right: 10, top: 10, bottom: 10),
+                            child: CircleAvatar(
+                              radius: 35,
+                              backgroundColor: klightGrey,
+                              child: IconButton(
+                                  onPressed: () async {
+                                    final pickedImages =
+                                        await _picker.pickMultiImage();
+                                    context
+                                        .read<ImageBloc>()
+                                        .add(Pick(pickedImage: pickedImages));
+                                    // showDialog(
+                                    //     context: context,
+                                    //     builder: (context) {
+                                    //       Color? color;
+                                    //       return Column(
+                                    //         children: [
+                                    //           AlertDialog(
+                                    //             title: const Text('Pick color'),
+                                    //             content: ColorPicker(
+                                    //               pickerColor: const Color.fromARGB(
+                                    //                   255, 78, 114, 0),
+                                    //               onColorChanged: (value) {
+                                    //                 color = value;
+                                    //               },
+                                    //             ),
+                                    //             actions: [
+                                    //               TextButton(
+                                    //                   onPressed: () {
+                                    //                     context
+                                    //                         .read<ColorBloc>()
+                                    //                         .add(Add(color!));
 
-                            //                     Navigator.pop(context);
-                            //                   },
-                            //                   child: const Text('Select'))
-                            //             ],
-                            //           ),
-                            //         ],
-                            //       );
-                            //     });
-                          },
-                          icon: const Icon(
-                            Iconsax.camera,
-                            size: 32,
-                          )),
-                    )),
-                Flexible(
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        left: 20, right: 10, top: 10, bottom: 10),
-                    child: LimitedBox(
-                        maxHeight: 80,
-                        child: BlocBuilder<ColorBloc, ColorState>(
-                          builder: (context, state) {
-                            // if (state.colors.isEmpty) {
-                            //   return const Center(
-                            //       child: Text('<-   Choose Color',
-                            //           style: TextStyle(fontSize: 20)));
-                            // }
-                            return ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              shrinkWrap: true,
-                              itemCount: 10,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 5),
-                                  child: Container(
-                                    height: 50,
-                                    width: 80,
-                                    decoration: BoxDecoration(
-                                        color: kblack,
-                                        borderRadius:
-                                            BorderRadius.circular(18)),
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                        )),
-                  ),
-                ),
-              ]),
+                                    //                     Navigator.pop(context);
+                                    //                   },
+                                    //                   child: const Text('Select'))
+                                    //             ],
+                                    //           ),
+                                    //         ],
+                                    //       );
+                                    //     });
+                                  },
+                                  icon: const Icon(
+                                    Iconsax.camera,
+                                    size: 32,
+                                  )),
+                            )),
+                        Flexible(
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 20, right: 10, top: 10, bottom: 10),
+                            child: LimitedBox(
+                                maxHeight: 80,
+                                child: BlocBuilder<ColorBloc, ColorState>(
+                                  builder: (context, state) {
+                                    // if (state.colors.isEmpty) {
+                                    //   return const Center(
+                                    //       child: Text('<-   Choose Color',
+                                    //           style: TextStyle(fontSize: 20)));
+                                    // }
+                                    return ListView.builder(
+                                      scrollDirection: Axis.horizontal,
+                                      shrinkWrap: true,
+                                      itemCount: 10,
+                                      itemBuilder: (context, index) {
+                                        return Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 5),
+                                          child: Container(
+                                            height: 50,
+                                            width: 80,
+                                            decoration: BoxDecoration(
+                                                color: kblack,
+                                                borderRadius:
+                                                    BorderRadius.circular(18)),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                )),
+                          ),
+                        ),
+                      ]);
+                },
+              ),
             ],
           ),
         );
