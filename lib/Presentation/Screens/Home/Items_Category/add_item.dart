@@ -357,16 +357,65 @@ class ItemAddPage extends StatelessWidget {
                                     return Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 5),
-                                      child: Container(
-                                        height: 80,
-                                        width: 60,
-                                        decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                                fit: BoxFit.cover,
-                                                image: FileImage(
-                                                    File(images.path))),
-                                            borderRadius:
-                                                BorderRadius.circular(14)),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          showDialog(
+                                              context: context,
+                                              builder: (context) => AlertDialog(
+                                                    title: const Center(
+                                                        child: Text(
+                                                            'Selected Image')),
+                                                    content: Container(
+                                                      height: 400,
+                                                      width: 450,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(15),
+                                                          image: DecorationImage(
+                                                              fit: BoxFit.cover,
+                                                              image: FileImage(
+                                                                  File(images
+                                                                      .path)))),
+                                                    ),
+                                                    actions: [
+                                                      TextButton(
+                                                          onPressed: () {
+                                                            showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (context) {
+                                                                  return AlertDialog(
+                                                                    title: Center(
+                                                                        child: Text(
+                                                                            'Are you sure to remove?')),
+                                                                  );
+                                                                });
+                                                          },
+                                                          child: const Text(
+                                                              'Delete')),
+                                                      TextButton(
+                                                          onPressed: () {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          child:
+                                                              const Text('Ok'))
+                                                    ],
+                                                  ));
+                                        },
+                                        child: Container(
+                                          height: 80,
+                                          width: 60,
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  fit: BoxFit.cover,
+                                                  image: FileImage(
+                                                      File(images.path))),
+                                              borderRadius:
+                                                  BorderRadius.circular(14)),
+                                        ),
                                       ),
                                     );
                                   },
