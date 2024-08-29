@@ -387,21 +387,52 @@ class ItemAddPage extends StatelessWidget {
                                                                 builder:
                                                                     (context) {
                                                                   return AlertDialog(
-                                                                    title: Center(
+                                                                    title: const Center(
                                                                         child: Text(
                                                                             'Are you sure to remove?')),
+                                                                    actions: [
+                                                                      TextButton(
+                                                                          onPressed:
+                                                                              () {
+                                                                            Navigator.pop(context);
+                                                                          },
+                                                                          child:
+                                                                              const Text(
+                                                                            'No',
+                                                                            style:
+                                                                                TextStyle(color: kblack),
+                                                                          )),
+                                                                      TextButton(
+                                                                          onPressed:
+                                                                              () {
+                                                                            state.mediaFileList!.remove(images);
+                                                                            Navigator.pop(context);
+                                                                          },
+                                                                          child:
+                                                                              const Text(
+                                                                            'Yes',
+                                                                            style:
+                                                                                TextStyle(color: kblack),
+                                                                          ))
+                                                                    ],
                                                                   );
                                                                 });
                                                           },
                                                           child: const Text(
-                                                              'Delete')),
+                                                            'Delete',
+                                                            style: TextStyle(
+                                                                color: kblack),
+                                                          )),
                                                       TextButton(
                                                           onPressed: () {
                                                             Navigator.pop(
                                                                 context);
                                                           },
-                                                          child:
-                                                              const Text('Ok'))
+                                                          child: const Text(
+                                                            'Ok',
+                                                            style: TextStyle(
+                                                                color: kblack),
+                                                          ))
                                                     ],
                                                   ));
                                         },
