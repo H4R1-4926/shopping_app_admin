@@ -1,3 +1,6 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
@@ -285,6 +288,7 @@ class ItemAddPage extends StatelessWidget {
               ),
               BlocBuilder<ImageBloc, ImageState>(
                 builder: (context, state) {
+                  log(state.mediaFileList.toString());
                   return Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -301,6 +305,7 @@ class ItemAddPage extends StatelessWidget {
                                     context
                                         .read<ImageBloc>()
                                         .add(Pick(pickedImage: pickedImages));
+
                                     // showDialog(
                                     //     context: context,
                                     //     builder: (context) {
@@ -343,31 +348,26 @@ class ItemAddPage extends StatelessWidget {
                                 left: 20, right: 10, top: 10, bottom: 10),
                             child: LimitedBox(
                                 maxHeight: 80,
-                                child: BlocBuilder<ColorBloc, ColorState>(
-                                  builder: (context, state) {
-                                    // if (state.colors.isEmpty) {
-                                    //   return const Center(
-                                    //       child: Text('<-   Choose Color',
-                                    //           style: TextStyle(fontSize: 20)));
-                                    // }
-                                    return ListView.builder(
-                                      scrollDirection: Axis.horizontal,
-                                      shrinkWrap: true,
-                                      itemCount: 10,
-                                      itemBuilder: (context, index) {
-                                        return Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 5),
-                                          child: Container(
-                                            height: 50,
-                                            width: 80,
-                                            decoration: BoxDecoration(
-                                                color: kblack,
-                                                borderRadius:
-                                                    BorderRadius.circular(18)),
-                                          ),
-                                        );
-                                      },
+                                child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  itemCount: state.mediaFileList!.length,
+                                  itemBuilder: (context, index) {
+                                    final images = state.mediaFileList![index];
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5),
+                                      child: Container(
+                                        height: 80,
+                                        width: 60,
+                                        decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                fit: BoxFit.cover,
+                                                image: FileImage(
+                                                    File(images.path))),
+                                            borderRadius:
+                                                BorderRadius.circular(14)),
+                                      ),
                                     );
                                   },
                                 )),
