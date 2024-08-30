@@ -532,6 +532,29 @@ class ItemAddPage extends StatelessWidget {
                       ]);
                 },
               ),
+              text.isNotEmpty
+                  ? ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: text.length,
+                      itemBuilder: (context, index) {
+                        return TextField(
+                          controller: textController,
+                          decoration: InputDecoration(
+                              hintText: text[index],
+                              enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(21),
+                                  borderSide:
+                                      const BorderSide(color: klightGrey)),
+                              focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(21),
+                                  borderSide:
+                                      const BorderSide(color: klightGrey)),
+                              filled: true,
+                              fillColor: klightGrey),
+                        );
+                      },
+                    )
+                  : const SizedBox()
             ],
           ),
           floatingActionButton: Padding(
