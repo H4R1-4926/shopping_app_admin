@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'dart:developer';
 import 'dart:io';
 
@@ -20,16 +22,29 @@ class ItemAddPage extends StatelessWidget {
     final _picker = ImagePicker();
     final TextEditingController categoryController =
         TextEditingController(text: 'Select Category');
+    final TextEditingController sizeController =
+        TextEditingController(text: 'Size');
+    final TextEditingController textController = TextEditingController();
     final List<String> category = [
       'Protiens',
       'Creatin',
       'Equipments',
       'Cloths'
     ];
+    final List<String> size = [
+      'S',
+      'M',
+      'L',
+      'XL',
+      'XXL',
+    ];
+    List<String>? text = [];
 
     return BlocBuilder<VisibleBloc, VisibleState>(
       builder: (context, state) {
         return Scaffold(
+          resizeToAvoidBottomInset: true,
+          extendBody: true,
           appBar: AppBar(
             title: Text(
               'Add Item',
@@ -121,44 +136,51 @@ class ItemAddPage extends StatelessWidget {
                       fillColor: klightGrey),
                 ),
               ),
-              Row(children: [
-                Flexible(
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        left: 20, right: 10, top: 10, bottom: 10),
-                    child: TextField(
-                      decoration: InputDecoration(
-                          hintText: 'Kg/Lbs',
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(21),
-                              borderSide: const BorderSide(color: klightGrey)),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(21),
-                              borderSide: const BorderSide(color: klightGrey)),
-                          filled: true,
-                          fillColor: klightGrey),
+              Visibility(
+                visible: state.isTrue == true ? false : true,
+                child: Row(children: [
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 20, right: 10, top: 10, bottom: 10),
+                      child: TextField(
+                        decoration: InputDecoration(
+                            hintText: 'Kg/Lbs',
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(21),
+                                borderSide:
+                                    const BorderSide(color: klightGrey)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(21),
+                                borderSide:
+                                    const BorderSide(color: klightGrey)),
+                            filled: true,
+                            fillColor: klightGrey),
+                      ),
                     ),
                   ),
-                ),
-                Flexible(
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        left: 20, right: 10, top: 10, bottom: 10),
-                    child: TextField(
-                      decoration: InputDecoration(
-                          hintText: 'Price',
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(21),
-                              borderSide: const BorderSide(color: klightGrey)),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(21),
-                              borderSide: const BorderSide(color: klightGrey)),
-                          filled: true,
-                          fillColor: klightGrey),
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 20, right: 10, top: 10, bottom: 10),
+                      child: TextField(
+                        decoration: InputDecoration(
+                            hintText: 'Price',
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(21),
+                                borderSide:
+                                    const BorderSide(color: klightGrey)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(21),
+                                borderSide:
+                                    const BorderSide(color: klightGrey)),
+                            filled: true,
+                            fillColor: klightGrey),
+                      ),
                     ),
                   ),
-                ),
-              ]),
+                ]),
+              ),
               Visibility(
                 visible: state.isTrue,
                 child: Row(children: [
@@ -167,7 +189,36 @@ class ItemAddPage extends StatelessWidget {
                       padding: const EdgeInsets.only(
                           left: 20, right: 10, top: 10, bottom: 10),
                       child: TextField(
+                        readOnly: true,
+                        controller: sizeController,
                         decoration: InputDecoration(
+                            suffixIcon: DropdownButton(
+                              underline: const SizedBox(),
+                              icon: const Icon(Icons.arrow_drop_down_rounded),
+                              iconEnabledColor: Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? kGrey
+                                  : kblack,
+                              iconSize: 32,
+                              borderRadius: BorderRadius.circular(18),
+                              style: GoogleFonts.lato(
+                                  color: Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? kwhite
+                                      : kblack,
+                                  fontWeight: FontWeight.bold),
+                              items: size
+                                  .map((e) => DropdownMenuItem(
+                                        value: e,
+                                        child: Text(e),
+                                      ))
+                                  .toList(),
+                              onChanged: (value) {
+                                sizeController.text = value.toString();
+                                context.read<VisibleBloc>().add(OnChanged(
+                                    category: categoryController.text));
+                              },
+                            ),
                             hintText: 'Size',
                             enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(21),
@@ -189,6 +240,31 @@ class ItemAddPage extends StatelessWidget {
                       child: TextField(
                         decoration: InputDecoration(
                             hintText: 'Material',
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(21),
+                                borderSide:
+                                    const BorderSide(color: klightGrey)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(21),
+                                borderSide:
+                                    const BorderSide(color: klightGrey)),
+                            filled: true,
+                            fillColor: klightGrey),
+                      ),
+                    ),
+                  ),
+                ]),
+              ),
+              Visibility(
+                visible: state.isTrue,
+                child: Row(children: [
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 20, right: 230, top: 10, bottom: 10),
+                      child: TextField(
+                        decoration: InputDecoration(
+                            hintText: 'Price',
                             enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(21),
                                 borderSide:
@@ -302,6 +378,7 @@ class ItemAddPage extends StatelessWidget {
                                   onPressed: () async {
                                     final pickedImages =
                                         await _picker.pickMultiImage();
+                                    // ignore: use_build_context_synchronously
                                     context
                                         .read<ImageBloc>()
                                         .add(Pick(pickedImage: pickedImages));
@@ -405,7 +482,6 @@ class ItemAddPage extends StatelessWidget {
                                                                       TextButton(
                                                                           onPressed:
                                                                               () {
-                                                                            state.mediaFileList!.remove(images);
                                                                             Navigator.pop(context);
                                                                           },
                                                                           child:
@@ -457,6 +533,71 @@ class ItemAddPage extends StatelessWidget {
                 },
               ),
             ],
+          ),
+          floatingActionButton: Padding(
+            padding: const EdgeInsets.only(bottom: 45),
+            child: FloatingActionButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      content: TextField(
+                        controller: textController,
+                        decoration: InputDecoration(
+                            hintText: 'Enter Label',
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(21),
+                                borderSide:
+                                    const BorderSide(color: klightGrey)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(21),
+                                borderSide:
+                                    const BorderSide(color: klightGrey)),
+                            filled: true,
+                            fillColor: klightGrey),
+                      ),
+                      actions: [
+                        TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text(
+                              'Cancel',
+                              style: TextStyle(color: kblack),
+                            )),
+                        TextButton(
+                            onPressed: () {
+                              text.add(textController.text);
+                              log(text.toString());
+                              Navigator.pop(context);
+                              textController.clear();
+                            },
+                            child: const Text(
+                              'Add',
+                              style: TextStyle(color: kblack),
+                            ))
+                      ],
+                    );
+                  },
+                );
+              },
+              backgroundColor: kblack,
+              child: const Icon(
+                Iconsax.add,
+                color: kwhite,
+                size: 35,
+              ),
+            ),
+          ),
+          bottomSheet: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Container(
+              height: 60,
+              width: 300,
+              decoration: BoxDecoration(
+                  color: kblack, borderRadius: BorderRadius.circular(20)),
+            ),
           ),
         );
       },
