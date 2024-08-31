@@ -52,88 +52,95 @@ class ItemAddPage extends StatelessWidget {
                   fontWeight: FontWeight.bold, fontSize: 22),
             ),
           ),
-          body: Column(
-            children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: TextField(
-                  decoration: InputDecoration(
-                      hintText: 'Item Name',
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(21),
-                          borderSide: const BorderSide(color: klightGrey)),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(21),
-                          borderSide: const BorderSide(color: klightGrey)),
-                      filled: true,
-                      fillColor: klightGrey),
+          body: SingleChildScrollView(
+            child: Column(children: [
+              Flexible(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        hintText: 'Item Name',
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(21),
+                            borderSide: const BorderSide(color: klightGrey)),
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(21),
+                            borderSide: const BorderSide(color: klightGrey)),
+                        filled: true,
+                        fillColor: klightGrey),
+                  ),
                 ),
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: TextField(
-                  maxLines: 5,
-                  maxLength: 200,
-                  decoration: InputDecoration(
-                      counterText: ' ',
-                      hintText: 'Item Description',
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(21),
-                          borderSide: const BorderSide(color: klightGrey)),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(21),
-                          borderSide: const BorderSide(color: klightGrey)),
-                      filled: true,
-                      fillColor: klightGrey),
+              Flexible(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: TextField(
+                    maxLines: 5,
+                    maxLength: 200,
+                    decoration: InputDecoration(
+                        counterText: ' ',
+                        hintText: 'Item Description',
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(21),
+                            borderSide: const BorderSide(color: klightGrey)),
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(21),
+                            borderSide: const BorderSide(color: klightGrey)),
+                        filled: true,
+                        fillColor: klightGrey),
+                  ),
                 ),
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: TextField(
-                  controller: categoryController,
-                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
-                  readOnly: true,
-                  decoration: InputDecoration(
-                      suffixIcon: category.isEmpty
-                          ? const SizedBox()
-                          : DropdownButton(
-                              underline: const SizedBox(),
-                              icon: const Icon(Icons.arrow_drop_down_rounded),
-                              iconEnabledColor: Theme.of(context).brightness ==
-                                      Brightness.dark
-                                  ? kGrey
-                                  : kblack,
-                              iconSize: 32,
-                              borderRadius: BorderRadius.circular(18),
-                              style: GoogleFonts.lato(
-                                  color: Theme.of(context).brightness ==
-                                          Brightness.dark
-                                      ? kwhite
-                                      : kblack,
-                                  fontWeight: FontWeight.bold),
-                              items: category
-                                  .map((e) => DropdownMenuItem(
-                                        value: e,
-                                        child: Text(e),
-                                      ))
-                                  .toList(),
-                              onChanged: (value) {
-                                categoryController.text = value.toString();
-                                context.read<VisibleBloc>().add(OnChanged(
-                                    category: categoryController.text));
-                              },
-                            ),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(21),
-                          borderSide: const BorderSide(color: klightGrey)),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(21),
-                          borderSide: const BorderSide(color: klightGrey)),
-                      filled: true,
-                      fillColor: klightGrey),
+              Flexible(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: TextField(
+                    controller: categoryController,
+                    style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
+                    readOnly: true,
+                    decoration: InputDecoration(
+                        suffixIcon: category.isEmpty
+                            ? const SizedBox()
+                            : DropdownButton(
+                                underline: const SizedBox(),
+                                icon: const Icon(Icons.arrow_drop_down_rounded),
+                                iconEnabledColor:
+                                    Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? kGrey
+                                        : kblack,
+                                iconSize: 32,
+                                borderRadius: BorderRadius.circular(18),
+                                style: GoogleFonts.lato(
+                                    color: Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? kwhite
+                                        : kblack,
+                                    fontWeight: FontWeight.bold),
+                                items: category
+                                    .map((e) => DropdownMenuItem(
+                                          value: e,
+                                          child: Text(e),
+                                        ))
+                                    .toList(),
+                                onChanged: (value) {
+                                  categoryController.text = value.toString();
+                                  context.read<VisibleBloc>().add(OnChanged(
+                                      category: categoryController.text));
+                                },
+                              ),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(21),
+                            borderSide: const BorderSide(color: klightGrey)),
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(21),
+                            borderSide: const BorderSide(color: klightGrey)),
+                        filled: true,
+                        fillColor: klightGrey),
+                  ),
                 ),
               ),
               Visibility(
@@ -533,35 +540,26 @@ class ItemAddPage extends StatelessWidget {
                 },
               ),
               text.isNotEmpty
-                  ? SizedBox(
-                      height: 100,
-                      child: BlocBuilder<VisibleBloc, VisibleState>(
-                        builder: (context, state) {
-                          return ListView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: state.texts.length,
-                            itemBuilder: (context, index) {
-                              return TextField(
-                                decoration: InputDecoration(
-                                    hintText: state.texts[index],
-                                    enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(21),
-                                        borderSide: const BorderSide(
-                                            color: klightGrey)),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(21),
-                                        borderSide: const BorderSide(
-                                            color: klightGrey)),
-                                    filled: true,
-                                    fillColor: klightGrey),
-                              );
-                            },
-                          );
-                        },
-                      ),
+                  ? ListView.builder(
+                      itemBuilder: (context, index) {
+                        return TextField(
+                          decoration: InputDecoration(
+                              hintText: state.texts[index],
+                              enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(21),
+                                  borderSide:
+                                      const BorderSide(color: klightGrey)),
+                              focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(21),
+                                  borderSide:
+                                      const BorderSide(color: klightGrey)),
+                              filled: true,
+                              fillColor: klightGrey),
+                        );
+                      },
                     )
                   : const SizedBox()
-            ],
+            ]),
           ),
           floatingActionButton: Padding(
             padding: const EdgeInsets.only(bottom: 45),
