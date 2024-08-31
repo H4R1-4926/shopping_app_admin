@@ -10,10 +10,13 @@ class VisibleBloc extends Bloc<VisibleEvent, VisibleState> {
   VisibleBloc() : super(VisibleState.initial()) {
     on<OnChanged>((event, emit) {
       if (event.category == 'Cloths') {
-        emit(const VisibleState(isTrue: true));
+        emit(VisibleState(isTrue: true, texts: state.texts));
       } else {
-        emit(const VisibleState(isTrue: false));
+        emit(VisibleState(isTrue: false, texts: state.texts));
       }
+    });
+    on<OnAdded>((event, emit) {
+      emit(VisibleState(isTrue: state.isTrue, texts: event.text));
     });
   }
 }

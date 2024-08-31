@@ -533,26 +533,32 @@ class ItemAddPage extends StatelessWidget {
                 },
               ),
               text.isNotEmpty
-                  ? ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: text.length,
-                      itemBuilder: (context, index) {
-                        return TextField(
-                          controller: textController,
-                          decoration: InputDecoration(
-                              hintText: text[index],
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(21),
-                                  borderSide:
-                                      const BorderSide(color: klightGrey)),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(21),
-                                  borderSide:
-                                      const BorderSide(color: klightGrey)),
-                              filled: true,
-                              fillColor: klightGrey),
-                        );
-                      },
+                  ? SizedBox(
+                      height: 100,
+                      child: BlocBuilder<VisibleBloc, VisibleState>(
+                        builder: (context, state) {
+                          return ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: state.texts.length,
+                            itemBuilder: (context, index) {
+                              return TextField(
+                                decoration: InputDecoration(
+                                    hintText: state.texts[index],
+                                    enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(21),
+                                        borderSide: const BorderSide(
+                                            color: klightGrey)),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(21),
+                                        borderSide: const BorderSide(
+                                            color: klightGrey)),
+                                    filled: true,
+                                    fillColor: klightGrey),
+                              );
+                            },
+                          );
+                        },
+                      ),
                     )
                   : const SizedBox()
             ],
@@ -592,6 +598,9 @@ class ItemAddPage extends StatelessWidget {
                         TextButton(
                             onPressed: () {
                               text.add(textController.text);
+                              context
+                                  .read<VisibleBloc>()
+                                  .add(OnAdded(text: text));
                               log(text.toString());
                               Navigator.pop(context);
                               textController.clear();
