@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -8,6 +10,7 @@ part 'visible_bloc.freezed.dart';
 
 class VisibleBloc extends Bloc<VisibleEvent, VisibleState> {
   VisibleBloc() : super(VisibleState.initial()) {
+    List<String>? text = [];
     on<OnChanged>((event, emit) {
       if (event.category == 'Cloths') {
         emit(VisibleState(isTrue: true, texts: state.texts));
@@ -16,7 +19,9 @@ class VisibleBloc extends Bloc<VisibleEvent, VisibleState> {
       }
     });
     on<OnAdded>((event, emit) {
-      emit(VisibleState(isTrue: state.isTrue, texts: event.text));
+      text.add(event.text);
+      log(text.toString());
+      emit(VisibleState(isTrue: state.isTrue, texts: text));
     });
   }
 }

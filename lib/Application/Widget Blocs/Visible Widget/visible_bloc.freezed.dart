@@ -19,19 +19,19 @@ mixin _$VisibleEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String category) onChanged,
-    required TResult Function(List<String> text) onAdded,
+    required TResult Function(String text) onAdded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String category)? onChanged,
-    TResult? Function(List<String> text)? onAdded,
+    TResult? Function(String text)? onAdded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String category)? onChanged,
-    TResult Function(List<String> text)? onAdded,
+    TResult Function(String text)? onAdded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -147,7 +147,7 @@ class _$OnChangedImpl implements OnChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String category) onChanged,
-    required TResult Function(List<String> text) onAdded,
+    required TResult Function(String text) onAdded,
   }) {
     return onChanged(category);
   }
@@ -156,7 +156,7 @@ class _$OnChangedImpl implements OnChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String category)? onChanged,
-    TResult? Function(List<String> text)? onAdded,
+    TResult? Function(String text)? onAdded,
   }) {
     return onChanged?.call(category);
   }
@@ -165,7 +165,7 @@ class _$OnChangedImpl implements OnChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String category)? onChanged,
-    TResult Function(List<String> text)? onAdded,
+    TResult Function(String text)? onAdded,
     required TResult orElse(),
   }) {
     if (onChanged != null) {
@@ -224,7 +224,7 @@ abstract class _$$OnAddedImplCopyWith<$Res> {
           _$OnAddedImpl value, $Res Function(_$OnAddedImpl) then) =
       __$$OnAddedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<String> text});
+  $Res call({String text});
 }
 
 /// @nodoc
@@ -244,9 +244,9 @@ class __$$OnAddedImplCopyWithImpl<$Res>
   }) {
     return _then(_$OnAddedImpl(
       text: null == text
-          ? _value._text
+          ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as String,
     ));
   }
 }
@@ -254,15 +254,10 @@ class __$$OnAddedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$OnAddedImpl implements OnAdded {
-  const _$OnAddedImpl({required final List<String> text}) : _text = text;
+  const _$OnAddedImpl({required this.text});
 
-  final List<String> _text;
   @override
-  List<String> get text {
-    if (_text is EqualUnmodifiableListView) return _text;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_text);
-  }
+  final String text;
 
   @override
   String toString() {
@@ -274,12 +269,11 @@ class _$OnAddedImpl implements OnAdded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OnAddedImpl &&
-            const DeepCollectionEquality().equals(other._text, _text));
+            (identical(other.text, text) || other.text == text));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_text));
+  int get hashCode => Object.hash(runtimeType, text);
 
   /// Create a copy of VisibleEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -293,7 +287,7 @@ class _$OnAddedImpl implements OnAdded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String category) onChanged,
-    required TResult Function(List<String> text) onAdded,
+    required TResult Function(String text) onAdded,
   }) {
     return onAdded(text);
   }
@@ -302,7 +296,7 @@ class _$OnAddedImpl implements OnAdded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String category)? onChanged,
-    TResult? Function(List<String> text)? onAdded,
+    TResult? Function(String text)? onAdded,
   }) {
     return onAdded?.call(text);
   }
@@ -311,7 +305,7 @@ class _$OnAddedImpl implements OnAdded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String category)? onChanged,
-    TResult Function(List<String> text)? onAdded,
+    TResult Function(String text)? onAdded,
     required TResult orElse(),
   }) {
     if (onAdded != null) {
@@ -353,9 +347,9 @@ class _$OnAddedImpl implements OnAdded {
 }
 
 abstract class OnAdded implements VisibleEvent {
-  const factory OnAdded({required final List<String> text}) = _$OnAddedImpl;
+  const factory OnAdded({required final String text}) = _$OnAddedImpl;
 
-  List<String> get text;
+  String get text;
 
   /// Create a copy of VisibleEvent
   /// with the given fields replaced by the non-null parameter values.

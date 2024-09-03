@@ -1,5 +1,6 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -37,7 +38,8 @@ class ItemAddPage extends StatelessWidget {
       'XL',
       'XXL',
     ];
-    List<String>? text = [''];
+    // List<String>? text = [];
+    // List<TextEditingController>? controllerList = [];
 
     return BlocBuilder<VisibleBloc, VisibleState>(
       builder: (context, state) {
@@ -377,203 +379,197 @@ class ItemAddPage extends StatelessWidget {
               ),
             ),
             SliverToBoxAdapter(
-              child: BlocBuilder<ImageBloc, ImageState>(
-                builder: (context, state) {
-                  return Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Padding(
-                            padding: const EdgeInsets.only(
-                                left: 20, right: 10, top: 10, bottom: 10),
-                            child: CircleAvatar(
-                              radius: 35,
-                              backgroundColor: klightGrey,
-                              child: IconButton(
-                                  onPressed: () async {
-                                    final pickedImages =
-                                        await _picker.pickMultiImage();
-                                    // ignore: use_build_context_synchronously
-                                    context
-                                        .read<ImageBloc>()
-                                        .add(Pick(pickedImage: pickedImages));
+              child: SizedBox(
+                height: 100,
+                child: BlocBuilder<ImageBloc, ImageState>(
+                  builder: (context, state) {
+                    return Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 20, right: 10, top: 10, bottom: 10),
+                              child: CircleAvatar(
+                                radius: 35,
+                                backgroundColor: klightGrey,
+                                child: IconButton(
+                                    onPressed: () async {
+                                      final pickedImages =
+                                          await _picker.pickMultiImage();
+                                      // ignore: use_build_context_synchronously
+                                      context
+                                          .read<ImageBloc>()
+                                          .add(Pick(pickedImage: pickedImages));
 
-                                    // showDialog(
-                                    //     context: context,
-                                    //     builder: (context) {
-                                    //       Color? color;
-                                    //       return Column(
-                                    //         children: [
-                                    //           AlertDialog(
-                                    //             title: const Text('Pick color'),
-                                    //             content: ColorPicker(
-                                    //               pickerColor: const Color.fromARGB(
-                                    //                   255, 78, 114, 0),
-                                    //               onColorChanged: (value) {
-                                    //                 color = value;
-                                    //               },
-                                    //             ),
-                                    //             actions: [
-                                    //               TextButton(
-                                    //                   onPressed: () {
-                                    //                     context
-                                    //                         .read<ColorBloc>()
-                                    //                         .add(Add(color!));
+                                      // showDialog(
+                                      //     context: context,
+                                      //     builder: (context) {
+                                      //       Color? color;
+                                      //       return Column(
+                                      //         children: [
+                                      //           AlertDialog(
+                                      //             title: const Text('Pick color'),
+                                      //             content: ColorPicker(
+                                      //               pickerColor: const Color.fromARGB(
+                                      //                   255, 78, 114, 0),
+                                      //               onColorChanged: (value) {
+                                      //                 color = value;
+                                      //               },
+                                      //             ),
+                                      //             actions: [
+                                      //               TextButton(
+                                      //                   onPressed: () {
+                                      //                     context
+                                      //                         .read<ColorBloc>()
+                                      //                         .add(Add(color!));
 
-                                    //                     Navigator.pop(context);
-                                    //                   },
-                                    //                   child: const Text('Select'))
-                                    //             ],
-                                    //           ),
-                                    //         ],
-                                    //       );
-                                    //     });
-                                  },
-                                  icon: const Icon(
-                                    Iconsax.camera,
-                                    size: 32,
-                                  )),
-                            )),
-                        Flexible(
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 20, right: 10, top: 10, bottom: 10),
-                            child: LimitedBox(
-                                maxHeight: 80,
-                                child: ListView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  shrinkWrap: true,
-                                  itemCount: state.mediaFileList!.length,
-                                  itemBuilder: (context, index) {
-                                    final images = state.mediaFileList![index];
-                                    return Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 5),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          showDialog(
-                                              context: context,
-                                              builder: (context) => AlertDialog(
-                                                    title: const Center(
-                                                        child: Text(
-                                                            'Selected Image')),
-                                                    content: Container(
-                                                      height: 400,
-                                                      width: 450,
-                                                      decoration: BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(15),
-                                                          image: DecorationImage(
-                                                              fit: BoxFit.cover,
-                                                              image: FileImage(
-                                                                  File(images
-                                                                      .path)))),
-                                                    ),
-                                                    actions: [
-                                                      TextButton(
-                                                          onPressed: () {
-                                                            showDialog(
-                                                                context:
-                                                                    context,
-                                                                builder:
-                                                                    (context) {
-                                                                  return AlertDialog(
-                                                                    title: const Center(
-                                                                        child: Text(
-                                                                            'Are you sure to remove?')),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                          onPressed:
-                                                                              () {
-                                                                            Navigator.pop(context);
-                                                                          },
-                                                                          child:
-                                                                              const Text(
-                                                                            'No',
-                                                                            style:
-                                                                                TextStyle(color: kblack),
-                                                                          )),
-                                                                      TextButton(
-                                                                          onPressed:
-                                                                              () {
-                                                                            Navigator.pop(context);
-                                                                          },
-                                                                          child:
-                                                                              const Text(
-                                                                            'Yes',
-                                                                            style:
-                                                                                TextStyle(color: kblack),
-                                                                          ))
-                                                                    ],
-                                                                  );
-                                                                });
-                                                          },
-                                                          child: const Text(
-                                                            'Delete',
-                                                            style: TextStyle(
-                                                                color: kblack),
-                                                          )),
-                                                      TextButton(
-                                                          onPressed: () {
-                                                            Navigator.pop(
-                                                                context);
-                                                          },
-                                                          child: const Text(
-                                                            'Ok',
-                                                            style: TextStyle(
-                                                                color: kblack),
-                                                          ))
-                                                    ],
-                                                  ));
-                                        },
-                                        child: Container(
-                                          height: 80,
-                                          width: 60,
-                                          decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                  fit: BoxFit.cover,
-                                                  image: FileImage(
-                                                      File(images.path))),
-                                              borderRadius:
-                                                  BorderRadius.circular(14)),
+                                      //                     Navigator.pop(context);
+                                      //                   },
+                                      //                   child: const Text('Select'))
+                                      //             ],
+                                      //           ),
+                                      //         ],
+                                      //       );
+                                      //     });
+                                    },
+                                    icon: const Icon(
+                                      Iconsax.camera,
+                                      size: 32,
+                                    )),
+                              )),
+                          Flexible(
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 20, right: 10, top: 10, bottom: 10),
+                              child: LimitedBox(
+                                  maxHeight: 80,
+                                  child: ListView.builder(
+                                    scrollDirection: Axis.horizontal,
+                                    shrinkWrap: true,
+                                    itemCount: state.mediaFileList!.length,
+                                    itemBuilder: (context, index) {
+                                      final images =
+                                          state.mediaFileList![index];
+                                      return Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 5),
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            showDialog(
+                                                context: context,
+                                                builder:
+                                                    (context) => AlertDialog(
+                                                          title: const Center(
+                                                              child: Text(
+                                                                  'Selected Image')),
+                                                          content: Container(
+                                                            height: 400,
+                                                            width: 450,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            15),
+                                                                image: DecorationImage(
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                    image: FileImage(
+                                                                        File(images
+                                                                            .path)))),
+                                                          ),
+                                                          actions: [
+                                                            TextButton(
+                                                                onPressed: () {
+                                                                  showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (context) {
+                                                                        return AlertDialog(
+                                                                          title:
+                                                                              const Center(child: Text('Are you sure to remove?')),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                                onPressed: () {
+                                                                                  Navigator.pop(context);
+                                                                                },
+                                                                                child: const Text(
+                                                                                  'No',
+                                                                                  style: TextStyle(color: kblack),
+                                                                                )),
+                                                                            TextButton(
+                                                                                onPressed: () {
+                                                                                  Navigator.pop(context);
+                                                                                },
+                                                                                child: const Text(
+                                                                                  'Yes',
+                                                                                  style: TextStyle(color: kblack),
+                                                                                ))
+                                                                          ],
+                                                                        );
+                                                                      });
+                                                                },
+                                                                child:
+                                                                    const Text(
+                                                                  'Delete',
+                                                                  style: TextStyle(
+                                                                      color:
+                                                                          kblack),
+                                                                )),
+                                                            TextButton(
+                                                                onPressed: () {
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                },
+                                                                child:
+                                                                    const Text(
+                                                                  'Ok',
+                                                                  style: TextStyle(
+                                                                      color:
+                                                                          kblack),
+                                                                ))
+                                                          ],
+                                                        ));
+                                          },
+                                          child: Container(
+                                            height: 80,
+                                            width: 60,
+                                            decoration: BoxDecoration(
+                                                image: DecorationImage(
+                                                    fit: BoxFit.cover,
+                                                    image: FileImage(
+                                                        File(images.path))),
+                                                borderRadius:
+                                                    BorderRadius.circular(14)),
+                                          ),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                )),
+                                      );
+                                    },
+                                  )),
+                            ),
                           ),
-                        ),
-                      ]);
-                },
+                        ]);
+                  },
+                ),
               ),
             ),
-            text.isNotEmpty
-                ? SliverGrid.builder(
-                    itemCount: state.texts.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            childAspectRatio: 2.8, crossAxisCount: 2),
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: TextField(
-                          decoration: InputDecoration(
-                              hintText: state.texts[index],
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(21),
-                                  borderSide:
-                                      const BorderSide(color: klightGrey)),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(21),
-                                  borderSide:
-                                      const BorderSide(color: klightGrey)),
-                              filled: true,
-                              fillColor: klightGrey),
-                        ),
-                      );
-                    },
-                  )
-                : const SliverToBoxAdapter(),
+            SliverList.builder(
+              itemCount: state.texts.length,
+              itemBuilder: (context, index) {
+                return TextField(
+                  decoration: InputDecoration(
+                      hintText: state.texts[index],
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(21),
+                          borderSide: const BorderSide(color: klightGrey)),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(21),
+                          borderSide: const BorderSide(color: klightGrey)),
+                      filled: true,
+                      fillColor: klightGrey),
+                );
+              },
+            ),
           ]),
           floatingActionButton: Padding(
             padding: const EdgeInsets.only(bottom: 45),
@@ -609,11 +605,13 @@ class ItemAddPage extends StatelessWidget {
                             )),
                         TextButton(
                             onPressed: () {
-                              text.add(textController.text);
-                              context
-                                  .read<VisibleBloc>()
-                                  .add(OnAdded(text: text));
-
+                              if (textController.text.isNotEmpty) {
+                                context
+                                    .read<VisibleBloc>()
+                                    .add(OnAdded(text: textController.text));
+                              }
+                              // log(state.texts.toString());
+                              // log(state.texts.length.toString());
                               Navigator.pop(context);
                               textController.clear();
                             },
