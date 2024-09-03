@@ -103,7 +103,7 @@ class ItemList extends StatelessWidget {
                           const WidgetStatePropertyAll(kdarkbackground),
                       headingTextStyle: GoogleFonts.lato(
                           color: kwhite,
-                          fontSize: 12,
+                          fontSize: 10,
                           fontWeight: FontWeight.bold),
                       dividerThickness: 1,
                       border: const TableBorder(
