@@ -10,7 +10,6 @@ part 'visible_bloc.freezed.dart';
 
 class VisibleBloc extends Bloc<VisibleEvent, VisibleState> {
   VisibleBloc() : super(VisibleState.initial()) {
-    List<String>? text = [];
     on<OnChanged>((event, emit) {
       if (event.category == 'Cloths') {
         emit(VisibleState(isTrue: true, texts: state.texts));
@@ -19,7 +18,7 @@ class VisibleBloc extends Bloc<VisibleEvent, VisibleState> {
       }
     });
     on<OnAdded>((event, emit) {
-      text.add(event.text);
+      final text = List<String>.from(state.texts)..add(event.text);
       log(text.toString());
       emit(VisibleState(isTrue: state.isTrue, texts: text));
     });

@@ -47,6 +47,8 @@ class ItemAddPage extends StatelessWidget {
           resizeToAvoidBottomInset: true,
           extendBody: true,
           appBar: AppBar(
+            backgroundColor: kwhite,
+            surfaceTintColor: kwhite,
             title: Text(
               'Add Item',
               style: GoogleFonts.montserrat(
@@ -341,38 +343,36 @@ class ItemAddPage extends StatelessWidget {
                               size: 40,
                             )),
                       )),
-                  SliverToBoxAdapter(
-                    child: Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 20, right: 10, top: 10, bottom: 10),
-                        child: LimitedBox(
-                            maxHeight: 80,
-                            child: BlocBuilder<ColorBloc, ColorState>(
-                              builder: (context, state) {
-                                if (state.colors.isEmpty) {
-                                  return const Center(
-                                      child: Text('<-   Choose Color',
-                                          style: TextStyle(fontSize: 20)));
-                                }
-                                return ListView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  shrinkWrap: true,
-                                  itemCount: state.colors.length,
-                                  itemBuilder: (context, index) {
-                                    return Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 5),
-                                      child: CircleAvatar(
-                                        radius: 35,
-                                        backgroundColor: state.colors[index],
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
-                            )),
-                      ),
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 20, right: 10, top: 10, bottom: 10),
+                      child: LimitedBox(
+                          maxHeight: 80,
+                          child: BlocBuilder<ColorBloc, ColorState>(
+                            builder: (context, state) {
+                              if (state.colors.isEmpty) {
+                                return const Center(
+                                    child: Text('<-   Choose Color',
+                                        style: TextStyle(fontSize: 20)));
+                              }
+                              return ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                shrinkWrap: true,
+                                itemCount: state.colors.length,
+                                itemBuilder: (context, index) {
+                                  return Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 5),
+                                    child: CircleAvatar(
+                                      radius: 35,
+                                      backgroundColor: state.colors[index],
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          )),
                     ),
                   ),
                 ]),
@@ -553,23 +553,40 @@ class ItemAddPage extends StatelessWidget {
                 ),
               ),
             ),
-            SliverList.builder(
-              itemCount: state.texts.length,
-              itemBuilder: (context, index) {
-                return TextField(
-                  decoration: InputDecoration(
-                      hintText: state.texts[index],
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(21),
-                          borderSide: const BorderSide(color: klightGrey)),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(21),
-                          borderSide: const BorderSide(color: klightGrey)),
-                      filled: true,
-                      fillColor: klightGrey),
+            BlocBuilder<VisibleBloc, VisibleState>(
+              builder: (context, state) {
+                log(state.texts.length.toString());
+                return SliverGrid.builder(
+                  itemCount: state.texts.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2, childAspectRatio: 2.8),
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: TextField(
+                        decoration: InputDecoration(
+                            hintText: state.texts[index],
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(21),
+                                borderSide:
+                                    const BorderSide(color: klightGrey)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(21),
+                                borderSide:
+                                    const BorderSide(color: klightGrey)),
+                            filled: true,
+                            fillColor: klightGrey),
+                      ),
+                    );
+                  },
                 );
               },
             ),
+            const SliverToBoxAdapter(
+              child: SizedBox(
+                height: 80,
+              ),
+            )
           ]),
           floatingActionButton: Padding(
             padding: const EdgeInsets.only(bottom: 45),
@@ -609,11 +626,11 @@ class ItemAddPage extends StatelessWidget {
                                 context
                                     .read<VisibleBloc>()
                                     .add(OnAdded(text: textController.text));
+                                Navigator.pop(context);
+                                textController.clear();
                               }
                               // log(state.texts.toString());
                               // log(state.texts.length.toString());
-                              Navigator.pop(context);
-                              textController.clear();
                             },
                             child: const Text(
                               'Add',
