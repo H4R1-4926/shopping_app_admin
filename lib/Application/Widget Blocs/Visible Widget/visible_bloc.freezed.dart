@@ -20,18 +20,21 @@ mixin _$VisibleEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String category) onChanged,
     required TResult Function(String text) onAdded,
+    required TResult Function() onSave,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String category)? onChanged,
     TResult? Function(String text)? onAdded,
+    TResult? Function()? onSave,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String category)? onChanged,
     TResult Function(String text)? onAdded,
+    TResult Function()? onSave,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$VisibleEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(OnChanged value) onChanged,
     required TResult Function(OnAdded value) onAdded,
+    required TResult Function(OnSave value) onSave,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(OnChanged value)? onChanged,
     TResult? Function(OnAdded value)? onAdded,
+    TResult? Function(OnSave value)? onSave,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnChanged value)? onChanged,
     TResult Function(OnAdded value)? onAdded,
+    TResult Function(OnSave value)? onSave,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -148,6 +154,7 @@ class _$OnChangedImpl implements OnChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(String category) onChanged,
     required TResult Function(String text) onAdded,
+    required TResult Function() onSave,
   }) {
     return onChanged(category);
   }
@@ -157,6 +164,7 @@ class _$OnChangedImpl implements OnChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String category)? onChanged,
     TResult? Function(String text)? onAdded,
+    TResult? Function()? onSave,
   }) {
     return onChanged?.call(category);
   }
@@ -166,6 +174,7 @@ class _$OnChangedImpl implements OnChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String category)? onChanged,
     TResult Function(String text)? onAdded,
+    TResult Function()? onSave,
     required TResult orElse(),
   }) {
     if (onChanged != null) {
@@ -179,6 +188,7 @@ class _$OnChangedImpl implements OnChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(OnChanged value) onChanged,
     required TResult Function(OnAdded value) onAdded,
+    required TResult Function(OnSave value) onSave,
   }) {
     return onChanged(this);
   }
@@ -188,6 +198,7 @@ class _$OnChangedImpl implements OnChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(OnChanged value)? onChanged,
     TResult? Function(OnAdded value)? onAdded,
+    TResult? Function(OnSave value)? onSave,
   }) {
     return onChanged?.call(this);
   }
@@ -197,6 +208,7 @@ class _$OnChangedImpl implements OnChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnChanged value)? onChanged,
     TResult Function(OnAdded value)? onAdded,
+    TResult Function(OnSave value)? onSave,
     required TResult orElse(),
   }) {
     if (onChanged != null) {
@@ -288,6 +300,7 @@ class _$OnAddedImpl implements OnAdded {
   TResult when<TResult extends Object?>({
     required TResult Function(String category) onChanged,
     required TResult Function(String text) onAdded,
+    required TResult Function() onSave,
   }) {
     return onAdded(text);
   }
@@ -297,6 +310,7 @@ class _$OnAddedImpl implements OnAdded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String category)? onChanged,
     TResult? Function(String text)? onAdded,
+    TResult? Function()? onSave,
   }) {
     return onAdded?.call(text);
   }
@@ -306,6 +320,7 @@ class _$OnAddedImpl implements OnAdded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String category)? onChanged,
     TResult Function(String text)? onAdded,
+    TResult Function()? onSave,
     required TResult orElse(),
   }) {
     if (onAdded != null) {
@@ -319,6 +334,7 @@ class _$OnAddedImpl implements OnAdded {
   TResult map<TResult extends Object?>({
     required TResult Function(OnChanged value) onChanged,
     required TResult Function(OnAdded value) onAdded,
+    required TResult Function(OnSave value) onSave,
   }) {
     return onAdded(this);
   }
@@ -328,6 +344,7 @@ class _$OnAddedImpl implements OnAdded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(OnChanged value)? onChanged,
     TResult? Function(OnAdded value)? onAdded,
+    TResult? Function(OnSave value)? onSave,
   }) {
     return onAdded?.call(this);
   }
@@ -337,6 +354,7 @@ class _$OnAddedImpl implements OnAdded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnChanged value)? onChanged,
     TResult Function(OnAdded value)? onAdded,
+    TResult Function(OnSave value)? onSave,
     required TResult orElse(),
   }) {
     if (onAdded != null) {
@@ -356,6 +374,117 @@ abstract class OnAdded implements VisibleEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OnAddedImplCopyWith<_$OnAddedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OnSaveImplCopyWith<$Res> {
+  factory _$$OnSaveImplCopyWith(
+          _$OnSaveImpl value, $Res Function(_$OnSaveImpl) then) =
+      __$$OnSaveImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$OnSaveImplCopyWithImpl<$Res>
+    extends _$VisibleEventCopyWithImpl<$Res, _$OnSaveImpl>
+    implements _$$OnSaveImplCopyWith<$Res> {
+  __$$OnSaveImplCopyWithImpl(
+      _$OnSaveImpl _value, $Res Function(_$OnSaveImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of VisibleEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$OnSaveImpl implements OnSave {
+  const _$OnSaveImpl();
+
+  @override
+  String toString() {
+    return 'VisibleEvent.onSave()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$OnSaveImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String category) onChanged,
+    required TResult Function(String text) onAdded,
+    required TResult Function() onSave,
+  }) {
+    return onSave();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String category)? onChanged,
+    TResult? Function(String text)? onAdded,
+    TResult? Function()? onSave,
+  }) {
+    return onSave?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String category)? onChanged,
+    TResult Function(String text)? onAdded,
+    TResult Function()? onSave,
+    required TResult orElse(),
+  }) {
+    if (onSave != null) {
+      return onSave();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OnChanged value) onChanged,
+    required TResult Function(OnAdded value) onAdded,
+    required TResult Function(OnSave value) onSave,
+  }) {
+    return onSave(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OnChanged value)? onChanged,
+    TResult? Function(OnAdded value)? onAdded,
+    TResult? Function(OnSave value)? onSave,
+  }) {
+    return onSave?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnChanged value)? onChanged,
+    TResult Function(OnAdded value)? onAdded,
+    TResult Function(OnSave value)? onSave,
+    required TResult orElse(),
+  }) {
+    if (onSave != null) {
+      return onSave(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnSave implements VisibleEvent {
+  const factory OnSave() = _$OnSaveImpl;
 }
 
 /// @nodoc

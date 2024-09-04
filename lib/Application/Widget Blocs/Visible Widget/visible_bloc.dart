@@ -22,5 +22,8 @@ class VisibleBloc extends Bloc<VisibleEvent, VisibleState> {
       log(text.toString());
       emit(VisibleState(isTrue: state.isTrue, texts: text));
     });
+    on<OnSave>((event, emit) {
+      emit(state.copyWith(texts: []));
+    });
   }
 }

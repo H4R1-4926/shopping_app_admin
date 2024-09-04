@@ -4,4 +4,5 @@ part of 'visible_bloc.dart';
 class VisibleEvent with _$VisibleEvent {
   const factory VisibleEvent.onChanged({required String category}) = OnChanged;
   const factory VisibleEvent.onAdded({required String text}) = OnAdded;
+  const factory VisibleEvent.onSave() = OnSave;
 }

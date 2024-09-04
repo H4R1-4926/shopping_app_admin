@@ -654,12 +654,15 @@ class ItemAddPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: GestureDetector(
               onTap: () {
+                if (state.texts.isNotEmpty) {
+                  context.read<VisibleBloc>().add(const OnSave());
+                }
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const ItemList(),
                     ), (route) {
-                  return false;
+                  return true;
                 });
               },
               child: Container(
