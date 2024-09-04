@@ -13,6 +13,7 @@ import 'package:shopping_app_admin/Application/Widget%20Blocs/Color%20Widget/col
 import 'package:shopping_app_admin/Application/Widget%20Blocs/Image%20Widget/image_bloc.dart';
 import 'package:shopping_app_admin/Application/Widget%20Blocs/Visible%20Widget/visible_bloc.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
+import 'package:shopping_app_admin/Presentation/Screens/Home/Items_Category/items.dart';
 
 class ItemAddPage extends StatelessWidget {
   const ItemAddPage({super.key});
@@ -651,11 +652,29 @@ class ItemAddPage extends StatelessWidget {
           ),
           bottomSheet: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Container(
-              height: 60,
-              width: 300,
-              decoration: BoxDecoration(
-                  color: kblack, borderRadius: BorderRadius.circular(20)),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ItemList(),
+                    ), (route) {
+                  return false;
+                });
+              },
+              child: Container(
+                height: 60,
+                width: 300,
+                decoration: BoxDecoration(
+                    color: kblack, borderRadius: BorderRadius.circular(20)),
+                child: const Center(
+                  child: Text(
+                    'Save',
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, color: kwhite),
+                  ),
+                ),
+              ),
             ),
           ),
         );
