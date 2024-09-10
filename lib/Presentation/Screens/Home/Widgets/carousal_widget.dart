@@ -19,7 +19,8 @@ class _TopContainerWidgetState extends State<TopContainerWidget> {
   int _current = 0;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      color: kwhite,
       width: double.infinity,
       height: 300,
       child: Column(

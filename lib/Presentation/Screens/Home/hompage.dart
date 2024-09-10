@@ -16,7 +16,10 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: kwhite,
         appBar: AppBar(
+          backgroundColor: kwhite,
+          surfaceTintColor: kwhite,
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                   bottomRight: Radius.elliptical(50, 45),
