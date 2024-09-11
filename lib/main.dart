@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopping_app_admin/Application/Widget%20Blocs/Color%20Widget/color_bloc.dart';
 import 'package:shopping_app_admin/Application/Widget%20Blocs/Image%20Widget/image_bloc.dart';
 import 'package:shopping_app_admin/Application/Widget%20Blocs/Visible%20Widget/visible_bloc.dart';
+import 'package:shopping_app_admin/Core/colors.dart';
 import 'package:shopping_app_admin/Presentation/Screens/Home/hompage.dart';
 
 void main() async {
@@ -28,8 +29,10 @@ class MainApp extends StatelessWidget {
           create: (context) => ImageBloc(),
         ),
       ],
-      child: const MaterialApp(
-          debugShowCheckedModeBanner: false, home: HomePage()),
+      child: MaterialApp(
+          theme: ThemeData(scaffoldBackgroundColor: kwhite),
+          debugShowCheckedModeBanner: false,
+          home: const HomePage()),
     );
   }
 }
