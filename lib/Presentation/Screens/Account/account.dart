@@ -6,6 +6,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:shopping_app_admin/Core/colors.dart';
 import 'package:shopping_app_admin/Core/size.dart';
 import 'package:shopping_app_admin/Presentation/Login/login.dart';
+import 'package:shopping_app_admin/Presentation/Screens/Account/Password/change_password.dart';
 
 import 'package:shopping_app_admin/Presentation/Screens/Account/Profile%20Screens/notification_settings.dart';
 
@@ -106,7 +107,7 @@ class AccountPage extends StatelessWidget {
               ontap: () {
                 Navigator.of(context).push(PageRouteBuilder(
                   pageBuilder: (context, animation, secondaryAnimation) =>
-                      const NotificationSettings(),
+                      const ChangePassword(),
                   transitionsBuilder:
                       (context, animation, secondaryAnimation, child) {
                     var tween = Tween(
