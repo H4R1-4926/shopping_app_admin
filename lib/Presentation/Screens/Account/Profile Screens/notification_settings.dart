@@ -11,12 +11,8 @@ class NotificationSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        surfaceTintColor: Theme.of(context).brightness == Brightness.dark
-            ? kdarkbackground
-            : kwhite,
-        backgroundColor: Theme.of(context).brightness == Brightness.dark
-            ? kdarkbackground
-            : kwhite,
+        surfaceTintColor: kwhite,
+        backgroundColor: kwhite,
         title: Text(
           'Notification',
           style:
