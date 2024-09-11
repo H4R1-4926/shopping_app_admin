@@ -17,6 +17,7 @@ class AccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: kwhite,
         appBar: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Theme.of(context).brightness == Brightness.dark
@@ -63,15 +64,10 @@ class AccountPage extends StatelessWidget {
                     ),
                     kSizedBoxHeight10,
                     Text(
-                      'Person Name',
+                      'Hai Admin',
                       style: GoogleFonts.poppins(
                           fontWeight: FontWeight.bold, fontSize: 22),
                     ),
-                    Text(
-                      '1010101010',
-                      style: GoogleFonts.openSans(
-                          fontWeight: FontWeight.w600, fontSize: 15),
-                    )
                   ],
                 ),
               ),
@@ -85,6 +81,28 @@ class AccountPage extends StatelessWidget {
             ListTileWidget(
               prefixIcon: Iconsax.notification,
               titleText: 'Notifications',
+              ontap: () {
+                Navigator.of(context).push(PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      const NotificationSettings(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    var tween = Tween(
+                      begin: const Offset(1.0, 0.0),
+                      end: Offset.zero,
+                    ).chain(CurveTween(curve: Curves.easeIn));
+                    return SlideTransition(
+                      position: animation.drive(tween),
+                      child: child,
+                    );
+                  },
+                ));
+              },
+              trailIcon: true,
+            ),
+            ListTileWidget(
+              prefixIcon: Iconsax.edit,
+              titleText: 'Change Password',
               ontap: () {
                 Navigator.of(context).push(PageRouteBuilder(
                   pageBuilder: (context, animation, secondaryAnimation) =>

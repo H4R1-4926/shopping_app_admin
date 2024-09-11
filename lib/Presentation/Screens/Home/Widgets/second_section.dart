@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:shopping_app_admin/Core/colors.dart';
+import 'package:shopping_app_admin/Presentation/Screens/Account/account.dart';
 import 'package:shopping_app_admin/Presentation/Screens/Home/Items_Category/items.dart';
 import 'package:shopping_app_admin/Presentation/Screens/Orders/orders_page.dart';
 
@@ -58,13 +59,22 @@ class GridPage extends StatelessWidget {
                       border: Border.all()),
                 ),
               ),
-              Container(
-                decoration: BoxDecoration(
-                    image: const DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage('assets/img/settings.jpg')),
-                    borderRadius: BorderRadius.circular(18),
-                    border: Border.all()),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AccountPage(),
+                      ));
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      image: const DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage('assets/img/settings.jpg')),
+                      borderRadius: BorderRadius.circular(18),
+                      border: Border.all()),
+                ),
               ),
               Container(
                 decoration: BoxDecoration(
