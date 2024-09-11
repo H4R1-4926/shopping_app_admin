@@ -20,26 +20,12 @@ class AccountPage extends StatelessWidget {
     return Scaffold(
         backgroundColor: kwhite,
         appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Theme.of(context).brightness == Brightness.dark
-              ? kdarkbackground
-              : kwhite,
+          automaticallyImplyLeading: true,
+          backgroundColor: kwhite,
           title: Text(
             'Settings',
             style: GoogleFonts.montserrat(
                 fontWeight: FontWeight.bold, fontSize: 20),
-          ),
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 5),
-            child: CircleAvatar(
-              backgroundColor: Theme.of(context).brightness == Brightness.dark
-                  ? kblack
-                  : kwhite,
-              backgroundImage: Theme.of(context).brightness == Brightness.dark
-                  ? const AssetImage('assets/img/drink white png.png')
-                  : const AssetImage('assets/img/drink black png.png'),
-              radius: 2,
-            ),
           ),
         ),
         body: ListView(
